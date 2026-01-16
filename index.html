@@ -13,349 +13,318 @@
         }
 
         :root {
-            --navy: #0A2540;
-            --gold: #CFA052;
-            --bg: #FAFAFA;
-            --black: #000000;
+            --navy: #1E3A5F;
+            --maroon: #7B2D42;
+            --silver: #C0C0C0;
+            --bg-light: #F5F5F5;
+            --bg-dark: #1A1A2E;
+            --text: #2D3748;
             --white: #FFFFFF;
-            --gray: #374151;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: 'Futura', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--black);
-            color: var(--white);
+            font-family: 'Futura', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--white);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 3rem;
         }
 
         /* Navigation */
         nav {
             position: fixed;
             top: 0;
-            width: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.98);
+            border-bottom: 1px solid rgba(30, 58, 95, 0.08);
             z-index: 1000;
-            padding: 1.5rem 2rem;
+            backdrop-filter: blur(10px);
         }
 
         nav .container {
-            max-width: 1600px;
-            margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding-top: 2rem;
+            padding-bottom: 2rem;
         }
 
-        nav .logo {
-            font-size: 1rem;
-            font-weight: 700;
-            color: var(--white);
-            letter-spacing: 0.1em;
+        nav .brand {
+            font-size: 0.875rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            color: var(--navy);
+        }
+
+        nav .links {
+            display: flex;
+            gap: 3rem;
         }
 
         nav a {
-            color: rgba(255, 255, 255, 0.6);
-            text-decoration: none;
             font-size: 0.875rem;
-            margin-left: 2rem;
-            transition: color 0.2s;
+            color: var(--text);
+            text-decoration: none;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
         }
 
         nav a:hover {
-            color: var(--gold);
+            opacity: 1;
         }
 
         /* Hero */
         .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--navy);
-            position: relative;
-            overflow: hidden;
+            padding: 12rem 0 8rem;
+            background: var(--white);
         }
 
         .hero-content {
             text-align: center;
-            z-index: 2;
         }
 
-        .hero-tag {
+        .hero-label {
             font-size: 0.75rem;
-            letter-spacing: 0.2em;
+            letter-spacing: 0.15em;
             text-transform: uppercase;
-            color: var(--gold);
+            color: var(--maroon);
             margin-bottom: 3rem;
+            font-weight: 600;
         }
 
         .hero h1 {
-            font-size: clamp(3rem, 10vw, 8rem);
-            font-weight: 700;
+            font-size: 5rem;
+            font-weight: 600;
+            color: var(--navy);
             line-height: 1;
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
             letter-spacing: -0.02em;
         }
 
-        .hero-stat {
-            font-size: clamp(1.5rem, 3vw, 2.5rem);
-            color: var(--gold);
-            font-weight: 700;
-            margin-bottom: 1rem;
+        .hero-subtitle {
+            font-size: 1.125rem;
+            color: var(--text);
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.7;
         }
 
         /* Section Base */
         section {
-            padding: 8rem 2rem;
-        }
-
-        .container {
-            max-width: 1600px;
-            margin: 0 auto;
+            padding: 8rem 0;
         }
 
         .section-label {
             font-size: 0.75rem;
-            letter-spacing: 0.2em;
+            letter-spacing: 0.15em;
             text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: 1rem;
+            color: var(--maroon);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
         }
 
         .section-title {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 700;
-            margin-bottom: 4rem;
-            letter-spacing: -0.02em;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 5rem;
+            letter-spacing: -0.01em;
         }
 
-        /* Identity Section */
+        .section-intro {
+            font-size: 1.125rem;
+            color: var(--text);
+            opacity: 0.7;
+            max-width: 700px;
+            margin-bottom: 4rem;
+            line-height: 1.7;
+        }
+
+        /* Identity */
         .identity {
-            background: var(--white);
-            color: var(--navy);
+            background: var(--bg-light);
         }
 
         .logo-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 3rem;
-            margin-bottom: 4rem;
+            gap: 2rem;
+            margin-bottom: 6rem;
         }
 
-        .logo-showcase {
-            aspect-ratio: 16/9;
+        .logo-card {
+            background: var(--white);
+            border: 1px solid rgba(30, 58, 95, 0.08);
+            border-radius: 4px;
+            padding: 6rem 3rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 1px solid rgba(10, 37, 64, 0.1);
             position: relative;
+            min-height: 400px;
         }
 
-        .logo-showcase.dark {
+        .logo-card.dark {
             background: var(--navy);
         }
 
-        .logo-showcase .rf-mark {
-            width: 120px;
-            height: 120px;
-            border: 4px solid currentColor;
+        .logo-card .label {
+            position: absolute;
+            bottom: 2rem;
+            left: 2rem;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            opacity: 0.4;
+            color: var(--text);
+        }
+
+        .logo-card.dark .label {
+            color: var(--white);
+        }
+
+        .rf-mark {
+            width: 140px;
+            height: 140px;
+            border: 3px solid var(--navy);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3rem;
-            font-weight: 700;
+            font-size: 3.5rem;
+            font-weight: 600;
             color: var(--navy);
         }
 
-        .logo-showcase.dark .rf-mark {
+        .logo-card.dark .rf-mark {
+            border-color: var(--white);
             color: var(--white);
         }
 
-        .logo-label {
-            position: absolute;
-            bottom: 1rem;
-            left: 1rem;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            opacity: 0.5;
+        .wordmark {
+            font-size: 2.5rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            color: var(--navy);
         }
 
-        .wordmark {
-            font-size: 3rem;
-            font-weight: 700;
-            letter-spacing: 0.05em;
+        .logo-card.dark .wordmark {
+            color: var(--white);
         }
 
         /* Colors */
         .colors {
-            background: var(--bg);
-            color: var(--navy);
+            background: var(--white);
         }
 
-        .color-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .color-swatch {
-            aspect-ratio: 1;
-            border-radius: 8px;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: 2rem;
-            position: relative;
-        }
-
-        .color-name {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-
-        .color-hex {
-            font-size: 1rem;
-            font-family: 'Courier New', monospace;
-            opacity: 0.8;
-        }
-
-        /* Typography */
-        .typography {
-            background: var(--black);
-        }
-
-        .type-scale {
-            margin-top: 4rem;
-        }
-
-        .type-item {
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 3rem 0;
-        }
-
-        .type-item:last-child {
-            border-bottom: none;
-        }
-
-        .type-meta {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--gold);
-            margin-bottom: 1rem;
-        }
-
-        .type-display {
-            font-size: clamp(2rem, 5vw, 6rem);
-            font-weight: 700;
-            line-height: 1.1;
-            letter-spacing: -0.02em;
-        }
-
-        .type-details {
-            margin-top: 1rem;
-            font-size: 0.875rem;
-            opacity: 0.5;
-        }
-
-        /* The Stack */
-        .stack {
-            background: var(--navy);
-        }
-
-        .stack-visual {
-            margin-top: 4rem;
+        .color-palette {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
         }
 
-        .stack-item {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 3rem;
-            border-radius: 8px;
-            text-align: center;
-            transition: all 0.3s;
+        .color-swatch {
+            aspect-ratio: 4/3;
+            border-radius: 4px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 2rem;
+            border: 1px solid rgba(30, 58, 95, 0.08);
         }
 
-        .stack-item:hover {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: var(--gold);
-            transform: translateY(-4px);
+        .color-swatch .name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
         }
 
-        .stack-number {
-            font-size: 4rem;
-            font-weight: 700;
-            color: var(--gold);
-            line-height: 1;
-            margin-bottom: 1rem;
-        }
-
-        .stack-name {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        .stack-desc {
+        .color-swatch .hex {
+            font-size: 0.875rem;
+            font-family: 'Courier New', monospace;
             opacity: 0.7;
-            line-height: 1.6;
         }
 
-        /* Market Dominance */
-        .dominance {
-            background: var(--gold);
+        /* Typography */
+        .typography {
+            background: var(--bg-light);
+        }
+
+        .type-scale {
+            background: var(--white);
+            border: 1px solid rgba(30, 58, 95, 0.08);
+            border-radius: 4px;
+        }
+
+        .type-example {
+            padding: 4rem 3rem;
+            border-bottom: 1px solid rgba(30, 58, 95, 0.08);
+        }
+
+        .type-example:last-child {
+            border-bottom: none;
+        }
+
+        .type-label {
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--maroon);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .type-specimen {
             color: var(--navy);
-            text-align: center;
-            padding: 10rem 2rem;
+            margin-bottom: 1rem;
         }
 
-        .dominance-number {
-            font-size: clamp(8rem, 20vw, 16rem);
-            font-weight: 700;
-            line-height: 1;
-            margin-bottom: 2rem;
-        }
-
-        .dominance-label {
-            font-size: clamp(1.5rem, 3vw, 2.5rem);
-            font-weight: 700;
+        .type-meta {
+            font-size: 0.875rem;
+            color: var(--text);
+            opacity: 0.5;
         }
 
         /* Applications */
         .applications {
             background: var(--white);
-            color: var(--navy);
         }
 
         .app-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 2rem;
-            margin-top: 4rem;
         }
 
         .app-card {
-            border: 1px solid rgba(10, 37, 64, 0.1);
-            border-radius: 8px;
+            border: 1px solid rgba(30, 58, 95, 0.08);
+            border-radius: 4px;
             overflow: hidden;
+            background: var(--white);
         }
 
         .app-preview {
             aspect-ratio: 16/10;
-            background: var(--navy);
+            background: var(--bg-light);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3rem;
-            color: var(--gold);
-            font-weight: 700;
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--navy);
         }
 
         .app-info {
@@ -363,128 +332,68 @@
         }
 
         .app-title {
-            font-size: 1.25rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 0.75rem;
         }
 
         .app-desc {
+            font-size: 0.9375rem;
+            color: var(--text);
             opacity: 0.6;
             line-height: 1.6;
         }
 
-        /* Customer Journey */
-        .journey {
-            background: var(--bg);
-            color: var(--navy);
-        }
-
-        .journey-flow {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            margin-top: 4rem;
-        }
-
-        .journey-step {
-            text-align: center;
-            position: relative;
-        }
-
-        .journey-step::after {
-            content: '→';
-            position: absolute;
-            right: -2rem;
-            top: 2rem;
-            font-size: 2rem;
-            color: var(--gold);
-        }
-
-        .journey-step:last-child::after {
-            display: none;
-        }
-
-        .journey-icon {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
+        /* Footer */
+        footer {
+            padding: 6rem 0;
             background: var(--navy);
             color: var(--white);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-            font-size: 1.5rem;
-            font-weight: 700;
+            text-align: center;
         }
 
-        .journey-label {
-            font-size: 1.125rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
+        footer .brand {
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
         }
 
-        .journey-desc {
+        footer .tagline {
             font-size: 0.875rem;
             opacity: 0.6;
         }
 
-        /* Tagline */
-        .tagline {
-            background: var(--black);
-            padding: 10rem 2rem;
-            text-align: center;
-        }
-
-        .tagline-text {
-            font-size: clamp(2rem, 5vw, 4rem);
-            font-weight: 700;
-            line-height: 1.3;
-        }
-
-        .tagline-text .highlight {
-            color: var(--gold);
-        }
-
-        /* Footer */
-        footer {
-            background: var(--navy);
-            padding: 4rem 2rem;
-            text-align: center;
-        }
-
         footer .divider {
-            width: 60px;
-            height: 3px;
-            background: var(--gold);
+            width: 40px;
+            height: 2px;
+            background: var(--maroon);
             margin: 2rem auto;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            .logo-grid {
-                grid-template-columns: 1fr;
+            .container {
+                padding: 0 2rem;
             }
 
-            .stack-visual {
-                grid-template-columns: 1fr;
+            nav .links {
+                display: none;
             }
 
-            .journey-flow {
-                grid-template-columns: 1fr;
+            .hero h1 {
+                font-size: 3rem;
             }
 
-            .journey-step::after {
-                content: '↓';
-                right: auto;
-                top: auto;
-                bottom: -2.5rem;
-                left: 50%;
-                transform: translateX(-50%);
-            }
-
+            .logo-grid,
+            .color-palette,
             .app-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2rem;
             }
         }
     </style>
@@ -492,256 +401,189 @@
 <body>
     <nav>
         <div class="container">
-            <div class="logo">REVERSE FOCUS</div>
-            <div>
+            <div class="brand">REVERSE FOCUS</div>
+            <div class="links">
                 <a href="#identity">Identity</a>
                 <a href="#colors">Colors</a>
-                <a href="#type">Typography</a>
-                <a href="#stack">The Stack</a>
-                <a href="brand-strategy.html">Strategy</a>
+                <a href="#typography">Typography</a>
+                <a href="#applications">Applications</a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero -->
     <section class="hero">
-        <div class="hero-content">
-            <div class="hero-tag">Brand House</div>
-            <h1>REVERSE<br>FOCUS</h1>
-            <div class="hero-stat">1 in 5</div>
-            <p style="font-size: 1.25rem; opacity: 0.8;">The infrastructure reverse mortgage originators run on</p>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-label">Brand House</div>
+                <h1>Reverse Focus</h1>
+                <p class="hero-subtitle">Visual identity system for the platform powering 1 in 5 reverse mortgage transactions in America</p>
+            </div>
         </div>
     </section>
 
-    <!-- Identity -->
     <section id="identity" class="identity">
         <div class="container">
             <div class="section-label">01 — Identity</div>
             <h2 class="section-title">Brand Mark</h2>
 
             <div class="logo-grid">
-                <div class="logo-showcase">
+                <div class="logo-card">
                     <div class="rf-mark">RF</div>
-                    <div class="logo-label">Primary Mark — Light</div>
+                    <div class="label">Primary Mark</div>
                 </div>
-                <div class="logo-showcase dark">
+                <div class="logo-card dark">
                     <div class="rf-mark">RF</div>
-                    <div class="logo-label" style="color: rgba(255,255,255,0.5);">Primary Mark — Dark</div>
+                    <div class="label">On Dark</div>
                 </div>
-                <div class="logo-showcase">
+                <div class="logo-card">
                     <div class="wordmark">REVERSE FOCUS</div>
-                    <div class="logo-label">Wordmark — Light</div>
+                    <div class="label">Wordmark</div>
                 </div>
-                <div class="logo-showcase dark">
-                    <div class="wordmark" style="color: white;">REVERSE FOCUS</div>
-                    <div class="logo-label" style="color: rgba(255,255,255,0.5);">Wordmark — Dark</div>
+                <div class="logo-card dark">
+                    <div class="wordmark">REVERSE FOCUS</div>
+                    <div class="label">Wordmark — Dark</div>
                 </div>
-            </div>
-
-            <div style="margin-top: 4rem;">
-                <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem;">Usage Guidelines</h3>
-                <p style="line-height: 1.7; opacity: 0.7; max-width: 800px;">The RF emblem represents focus and precision. Use the circular mark for social media, app icons, and compact applications. The full wordmark is preferred for marketing materials, website headers, and official communications.</p>
             </div>
         </div>
     </section>
 
-    <!-- Colors -->
     <section id="colors" class="colors">
         <div class="container">
             <div class="section-label">02 — Colors</div>
-            <h2 class="section-title">Brand Palette</h2>
+            <h2 class="section-title">Color System</h2>
 
-            <div class="color-grid">
-                <div class="color-swatch" style="background: #0A2540; color: white;">
-                    <div class="color-name">Navy</div>
-                    <div class="color-hex">#0A2540</div>
+            <div class="color-palette">
+                <div class="color-swatch" style="background: #1E3A5F; color: white;">
+                    <div class="name">Navy</div>
+                    <div class="hex">#1E3A5F</div>
                 </div>
-                <div class="color-swatch" style="background: #CFA052; color: #0A2540;">
-                    <div class="color-name">Gold</div>
-                    <div class="color-hex">#CFA052</div>
+                <div class="color-swatch" style="background: #7B2D42; color: white;">
+                    <div class="name">Maroon</div>
+                    <div class="hex">#7B2D42</div>
                 </div>
-                <div class="color-swatch" style="background: #FAFAFA; color: #0A2540; border: 1px solid rgba(0,0,0,0.1);">
-                    <div class="color-name">Warm White</div>
-                    <div class="color-hex">#FAFAFA</div>
+                <div class="color-swatch" style="background: #C0C0C0; color: #1E3A5F;">
+                    <div class="name">Silver</div>
+                    <div class="hex">#C0C0C0</div>
                 </div>
-                <div class="color-swatch" style="background: #1A1A1A; color: white;">
-                    <div class="color-name">Rich Black</div>
-                    <div class="color-hex">#1A1A1A</div>
+                <div class="color-swatch" style="background: #F5F5F5; color: #1E3A5F;">
+                    <div class="name">Light Gray</div>
+                    <div class="hex">#F5F5F5</div>
                 </div>
-                <div class="color-swatch" style="background: #374151; color: white;">
-                    <div class="color-name">Text Gray</div>
-                    <div class="color-hex">#374151</div>
+                <div class="color-swatch" style="background: #1A1A2E; color: white;">
+                    <div class="name">Deep Dark</div>
+                    <div class="hex">#1A1A2E</div>
                 </div>
-                <div class="color-swatch" style="background: #10B981; color: white;">
-                    <div class="color-name">Success Green</div>
-                    <div class="color-hex">#10B981</div>
+                <div class="color-swatch" style="background: #2D3748; color: white;">
+                    <div class="name">Text Gray</div>
+                    <div class="hex">#2D3748</div>
                 </div>
-            </div>
-
-            <div style="margin-top: 4rem;">
-                <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem;">Color Strategy</h3>
-                <p style="line-height: 1.7; opacity: 0.7; max-width: 800px;">Navy conveys authority and financial confidence. Gold adds warmth and premium positioning—appropriate for the senior audience. Limit gold usage to 10% or less for maximum impact. The palette moves away from generic corporate blue toward a distinctive, ownable system.</p>
             </div>
         </div>
     </section>
 
-    <!-- Typography -->
-    <section id="type" class="typography">
+    <section id="typography" class="typography">
         <div class="container">
             <div class="section-label">03 — Typography</div>
             <h2 class="section-title">Type System</h2>
 
             <div class="type-scale">
-                <div class="type-item">
-                    <div class="type-meta">Display / Hero</div>
-                    <div class="type-display">20% of reverse loans</div>
-                    <div class="type-details">Futura Bold — 72-96pt — -2% letter spacing</div>
+                <div class="type-example">
+                    <div class="type-label">Display</div>
+                    <div class="type-specimen" style="font-size: 4rem; font-weight: 600; line-height: 1; letter-spacing: -0.02em;">
+                        20% of reverse loans
+                    </div>
+                    <div class="type-meta">Futura Medium — 64pt/64 — -2% tracking</div>
                 </div>
-                <div class="type-item">
-                    <div class="type-meta">Headline</div>
-                    <div class="type-display" style="font-size: clamp(1.75rem, 4vw, 3.5rem);">The ONLY end-to-end platform</div>
-                    <div class="type-details">Futura Bold — 48-56pt — -1% letter spacing</div>
+
+                <div class="type-example">
+                    <div class="type-label">Headline</div>
+                    <div class="type-specimen" style="font-size: 2.5rem; font-weight: 600; line-height: 1.2; letter-spacing: -0.01em;">
+                        The ONLY end-to-end platform
+                    </div>
+                    <div class="type-meta">Futura Medium — 40pt/48 — -1% tracking</div>
                 </div>
-                <div class="type-item">
-                    <div class="type-meta">Subheadline</div>
-                    <div class="type-display" style="font-size: clamp(1.25rem, 3vw, 2rem); font-weight: 500;">Built by reverse mortgage veterans for reverse mortgage professionals</div>
-                    <div class="type-details">Futura Medium — 28-32pt — Normal tracking</div>
+
+                <div class="type-example">
+                    <div class="type-label">Subhead</div>
+                    <div class="type-specimen" style="font-size: 1.5rem; font-weight: 500; line-height: 1.4;">
+                        Built by reverse mortgage veterans
+                    </div>
+                    <div class="type-meta">Futura Book — 24pt/32 — Normal tracking</div>
                 </div>
-                <div class="type-item">
-                    <div class="type-meta">Body Copy</div>
-                    <div class="type-display" style="font-size: 1.125rem; font-weight: 400; line-height: 1.7;">We're not a generic software company trying to serve everyone. We're reverse mortgage specialists who built the exact platform we needed—and now we power the industry. No lead left behind.</div>
-                    <div class="type-details">Futura Book — 18pt — 1.7 line height</div>
+
+                <div class="type-example">
+                    <div class="type-label">Body</div>
+                    <div class="type-specimen" style="font-size: 1.125rem; font-weight: 400; line-height: 1.7;">
+                        We're not a generic software company trying to serve everyone. We're reverse mortgage specialists who built the exact platform we needed—and now we power the industry.
+                    </div>
+                    <div class="type-meta">Futura Book — 18pt/30 — Normal tracking</div>
                 </div>
-                <div class="type-item">
-                    <div class="type-meta">Label / Small</div>
-                    <div class="type-display" style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em;">The Reverse Stack</div>
-                    <div class="type-details">Futura Bold — 12pt — 15% letter spacing — Uppercase</div>
+
+                <div class="type-example">
+                    <div class="type-label">Label</div>
+                    <div class="type-specimen" style="font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em;">
+                        The Reverse Stack
+                    </div>
+                    <div class="type-meta">Futura Medium — 12pt/16 — 15% tracking — Uppercase</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- The Stack -->
-    <section id="stack" class="stack">
-        <div class="container">
-            <div class="section-label">04 — The Product</div>
-            <h2 class="section-title">The Reverse Stack</h2>
-            <p style="font-size: 1.25rem; max-width: 800px; opacity: 0.8;">Not separate products—an integrated operating system for the entire reverse mortgage customer journey.</p>
-
-            <div class="stack-visual">
-                <div class="stack-item">
-                    <div class="stack-number">01</div>
-                    <div class="stack-name">MyLoanOfficer.us</div>
-                    <div class="stack-desc">Compliance-ready websites with lead capture and calculators</div>
-                </div>
-                <div class="stack-item">
-                    <div class="stack-number">02</div>
-                    <div class="stack-name">Online Dominance</div>
-                    <div class="stack-desc">Local SEO targeting reverse-specific keywords</div>
-                </div>
-                <div class="stack-item">
-                    <div class="stack-number">03</div>
-                    <div class="stack-name">Sales Engine</div>
-                    <div class="stack-desc">Purpose-built CRM with LOS integration</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Market Dominance -->
-    <section class="dominance">
-        <div class="container">
-            <div class="dominance-number">20%</div>
-            <div class="dominance-label">of all reverse mortgage transactions in America</div>
-        </div>
-    </section>
-
-    <!-- Customer Journey -->
-    <section id="journey" class="journey">
-        <div class="container">
-            <div class="section-label">05 — Customer Journey</div>
-            <h2 class="section-title">From Search to Funded Loan</h2>
-
-            <div class="journey-flow">
-                <div class="journey-step">
-                    <div class="journey-icon">01</div>
-                    <div class="journey-label">Google Search</div>
-                    <div class="journey-desc">Local SEO brings qualified leads</div>
-                </div>
-                <div class="journey-step">
-                    <div class="journey-icon">02</div>
-                    <div class="journey-label">Website</div>
-                    <div class="journey-desc">Compliant site captures contact</div>
-                </div>
-                <div class="journey-step">
-                    <div class="journey-icon">03</div>
-                    <div class="journey-label">CRM</div>
-                    <div class="journey-desc">9+ month nurture sequence</div>
-                </div>
-                <div class="journey-step">
-                    <div class="journey-icon">04</div>
-                    <div class="journey-label">Funded Loan</div>
-                    <div class="journey-desc">$1,000 cost per funded loan</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Applications -->
     <section id="applications" class="applications">
         <div class="container">
-            <div class="section-label">06 — Applications</div>
-            <h2 class="section-title">Brand in Action</h2>
+            <div class="section-label">04 — Applications</div>
+            <h2 class="section-title">Brand in Use</h2>
 
             <div class="app-grid">
                 <div class="app-card">
-                    <div class="app-preview">RF</div>
+                    <div class="app-preview" style="background: #1E3A5F; color: white;">
+                        RF
+                    </div>
                     <div class="app-info">
-                        <div class="app-title">Website Template</div>
-                        <div class="app-desc">HUD-compliant, mobile-optimized originator website with lead capture and calculators</div>
+                        <div class="app-title">Website Templates</div>
+                        <div class="app-desc">HUD-compliant originator websites with lead capture and mortgage calculators</div>
                     </div>
                 </div>
+
                 <div class="app-card">
-                    <div class="app-preview" style="background: #CFA052; color: #0A2540;">20%</div>
+                    <div class="app-preview" style="background: #F5F5F5; color: #1E3A5F; font-size: 3rem;">
+                        20%
+                    </div>
                     <div class="app-info">
-                        <div class="app-title">Market Dominance Visual</div>
-                        <div class="app-desc">Data visualization showcasing category leadership for presentations and marketing</div>
+                        <div class="app-title">Market Dominance</div>
+                        <div class="app-desc">Data visualization showcasing category leadership</div>
                     </div>
                 </div>
+
                 <div class="app-card">
-                    <div class="app-preview" style="background: #FAFAFA; color: #0A2540; font-size: 1.5rem;">Email</div>
+                    <div class="app-preview" style="background: white; color: #1E3A5F; border: 1px solid rgba(30, 58, 95, 0.08); font-size: 1.5rem;">
+                        Email
+                    </div>
                     <div class="app-info">
-                        <div class="app-title">CRM Email Templates</div>
-                        <div class="app-desc">Branded email sequences for 9+ month nurture campaigns</div>
+                        <div class="app-title">CRM Templates</div>
+                        <div class="app-desc">Email sequences for 9+ month nurture campaigns</div>
                     </div>
                 </div>
+
                 <div class="app-card">
-                    <div class="app-preview" style="background: #1A1A1A; font-size: 2rem;">•••</div>
+                    <div class="app-preview" style="background: #1A1A2E; color: white; font-size: 1.5rem;">
+                        Dashboard
+                    </div>
                     <div class="app-info">
-                        <div class="app-title">Dashboard Interface</div>
-                        <div class="app-desc">Sales Engine CRM dashboard with pipeline visualization and metrics</div>
+                        <div class="app-title">Sales Engine UI</div>
+                        <div class="app-desc">CRM dashboard with pipeline visualization</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Tagline -->
-    <section class="tagline">
-        <div class="container">
-            <div class="tagline-text">
-                <span class="highlight">"No lead left behind"</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
     <footer>
         <div class="container">
-            <div style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem;">REVERSE FOCUS</div>
+            <div class="brand">REVERSE FOCUS</div>
             <div class="divider"></div>
-            <p>Brand House — Visual Identity System</p>
-            <p style="margin-top: 1rem; opacity: 0.6; font-size: 0.875rem;">The infrastructure 1 in 5 reverse loans runs on</p>
+            <div class="tagline">Brand House — Visual Identity System</div>
         </div>
     </footer>
 </body>
