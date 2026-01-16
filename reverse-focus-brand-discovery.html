@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brand Discovery: Reverse Focus | Look Serious Brand Strategy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --navy: #0A2540;
+            --gold: #CFA052;
+            --warm-white: #FAFAFA;
+            --rich-black: #1A1A1A;
+            --text-gray: #374151;
+            --light-gray: #E5E7EB;
+            --accent-green: #10B981;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+            line-height: 1.6;
+            color: var(--text-gray);
+            background: var(--warm-white);
+        }
+
+        .header {
+            background: var(--navy);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            border-bottom: 4px solid var(--gold);
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .header .meta {
+            font-size: 1rem;
+            opacity: 0.8;
+            margin-top: 1rem;
+        }
+
+        .nav {
+            position: sticky;
+            top: 0;
+            background: white;
+            border-bottom: 1px solid var(--light-gray);
+            padding: 1rem 2rem;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .nav-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            justify-content: center;
+        }
+
+        .nav a {
+            color: var(--navy);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .nav a:hover {
+            background: var(--navy);
+            color: white;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .section {
+            background: white;
+            margin: 2rem 0;
+            padding: 3rem;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border-left: 4px solid var(--gold);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: baseline;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--light-gray);
+        }
+
+        .section-number {
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: var(--gold);
+            letter-spacing: 0.05em;
+        }
+
+        .section-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--navy);
+            flex: 1;
+        }
+
+        .intro-block {
+            background: #F0F9FF;
+            padding: 2rem;
+            border-radius: 6px;
+            margin-bottom: 2rem;
+            border-left: 3px solid var(--accent-green);
+        }
+
+        .highlight-box {
+            background: #FEF3C7;
+            padding: 1.5rem;
+            border-radius: 6px;
+            margin: 1.5rem 0;
+            border-left: 3px solid var(--gold);
+        }
+
+        .highlight-box strong {
+            color: var(--navy);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        h3 {
+            color: var(--navy);
+            font-size: 1.25rem;
+            margin: 2rem 0 1rem 0;
+            font-weight: 600;
+        }
+
+        h4 {
+            color: var(--navy);
+            font-size: 1.1rem;
+            margin: 1.5rem 0 0.75rem 0;
+            font-weight: 600;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        ul, ol {
+            margin: 1rem 0 1rem 2rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+            line-height: 1.7;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+        }
+
+        th {
+            background: var(--navy);
+            color: white;
+            padding: 0.75rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 0.75rem;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        tr:hover {
+            background: var(--warm-white);
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: var(--navy);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 6px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--gold);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            opacity: 0.9;
+            margin-top: 0.5rem;
+        }
+
+        .color-swatch {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border-radius: 4px;
+            vertical-align: middle;
+            margin-right: 0.5rem;
+            border: 1px solid var(--light-gray);
+        }
+
+        .recommendation {
+            background: #ECFDF5;
+            padding: 1.5rem;
+            border-radius: 6px;
+            margin: 1rem 0;
+            border-left: 3px solid var(--accent-green);
+        }
+
+        .recommendation h4 {
+            color: var(--accent-green);
+            margin-top: 0;
+        }
+
+        .quote {
+            font-size: 1.25rem;
+            font-style: italic;
+            color: var(--navy);
+            padding: 1.5rem;
+            border-left: 4px solid var(--gold);
+            margin: 2rem 0;
+            background: var(--warm-white);
+        }
+
+        .footer {
+            background: var(--rich-black);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .footer-divider {
+            border: 0;
+            height: 3px;
+            background: var(--gold);
+            margin: 2rem auto;
+            max-width: 200px;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.75rem;
+            }
+
+            .section {
+                padding: 1.5rem;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+
+            .nav-grid {
+                font-size: 0.75rem;
+            }
+
+            table {
+                font-size: 0.85rem;
+            }
+
+            th, td {
+                padding: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>BRAND DISCOVERY: REVERSE FOCUS</h1>
+        <div class="meta">
+            <div>Analyzed: January 16, 2026</div>
+            <div>Source: reversefocus.com</div>
+        </div>
+    </header>
+
+    <nav class="nav">
+        <div class="nav-grid">
+            <a href="#section-01">Quick Read</a>
+            <a href="#section-02">Offering</a>
+            <a href="#section-03">Audience</a>
+            <a href="#section-04">Visual</a>
+            <a href="#section-05">Messaging</a>
+            <a href="#section-06">UX</a>
+            <a href="#section-07">Pentagram Lens</a>
+            <a href="#section-08">ZAG Lens</a>
+            <a href="#section-09">Brightscout Lens</a>
+            <a href="#section-10">Brand Brief</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <section id="section-01" class="section">
+            <div class="section-header">
+                <span class="section-number">SECTION 01</span>
+                <h2 class="section-title">THE QUICK READ</h2>
+            </div>
+
+            <div class="intro-block">
+                <p>Reverse Focus is the dominant SaaS platform serving reverse mortgage loan originators, claiming their platform facilitates 14-20% of all reverse mortgage transactions in the United States. They offer an integrated toolkit of compliant websites, local SEO services, and a purpose-built CRM—essentially the Shopify of the reverse mortgage niche.</p>
+            </div>
+
+            <div class="highlight-box">
+                <strong>The biggest opportunity:</strong>
+                They have category ownership without the brand to match it. They look like a mid-tier WordPress agency when they could look like the industry standard.
+            </div>
+
+            <div class="highlight-box">
+                <strong>The primary challenge:</strong>
+                Their visual identity, messaging, and UX are trapped in 2018. The gap between their market dominance (20%+ of transactions) and their brand presence (generic B2B SaaS) is massive—and exploitable by competitors.
+            </div>
+        </section>
+
+        <section id="section-02" class="section">
+            <div class="section-header">
+                <span class="section-number">SECTION 02</span>
+                <h2 class="section-title">OFFERING AUDIT</h2>
+            </div>
+
+            <h3>CORE OFFERING</h3>
+            <p>End-to-end marketing and sales automation software exclusively for reverse mortgage loan originators. Three integrated products:</p>
+
+            <ol>
+                <li><strong>MyLoanOfficer.us Websites</strong> — Turnkey, compliance-ready website templates with lead capture, mortgage calculators, and educational content. ($129/mo + $300 setup)</li>
+                <li><strong>Online Dominance SEO</strong> — Local search optimization program targeting reverse-mortgage-specific keywords with the promise of "$1,000 cost per funded loan." ($295/mo + $1,000 setup, 6-12 month contracts)</li>
+                <li><strong>Sales Engine CRM</strong> — Purpose-built customer relationship management with workflow automation, LOS integration (ReverseVision, Encompass), email sequencing, and referral partner management. ($109/mo + $150 setup)</li>
+            </ol>
+
+            <h3>SECONDARY OFFERINGS</h3>
+            <ul>
+                <li>Corporate Success Program (branch/multi-branch services)</li>
+                <li>Training webinars and resources</li>
+                <li>Blog content on mortgage marketing trends</li>
+                <li>Bundled packages with pricing incentives ($450/mo for total package)</li>
+            </ul>
+
+            <h3>BUSINESS MODEL</h3>
+            <p>B2B SaaS with monthly recurring revenue + one-time setup fees. Month-to-month contracts with 15% annual payment discount. SEO requires 6-12 month commitment. Clear bundle incentives push toward "Total Package" adoption.</p>
+
+            <h3>VALUE PROPOSITION</h3>
+            <p><strong>Stated:</strong> "A cost per funded loan as low as $1,000" and "No lead left behind"</p>
+            <p><strong>Implied:</strong> We're reverse mortgage people who built software for reverse mortgage people. You don't have to explain your business to us.</p>
+
+            <h3>PROOF POINTS</h3>
+            <div class="stats">
+                <div class="stat-card">
+                    <span class="stat-number">20%</span>
+                    <span class="stat-label">Of all reverse mortgage transactions facilitated</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">7,000+</span>
+                    <span class="stat-label">Loans funded in 2021</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">100,000+</span>
+                    <span class="stat-label">Emails sent monthly</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">70+ years</span>
+                    <span class="stat-label">Combined team experience</span>
+                </div>
+            </div>
+
+            <p><strong>Named customers:</strong> Fairway, Longbridge, C2, Norcom, RFS, and others</p>
+            <p><strong>Integration partners:</strong> ReverseVision, Encompass, Zillow, LendingTree, etc.</p>
+        </section>
+
+        <section id="section-03" class="section">
+            <div class="section-header">
+                <span class="section-number">SECTION 03</span>
+                <h2 class="section-title">AUDIENCE PROFILE</h2>
+            </div>
+
+            <h3>PRIMARY AUDIENCE</h3>
+            <p>Individual reverse mortgage loan originators and small teams seeking to:</p>
+            <ul>
+                <li>Generate more leads locally</li>
+                <li>Maintain compliance without legal headaches</li>
+                <li>Automate follow-up over the 9+ month average sales cycle</li>
+                <li>Compete against larger, better-funded competitors</li>
+                <li>Reduce cost per acquisition</li>
+            </ul>
+
+            <h3>SECONDARY AUDIENCES</h3>
+            <ul>
+                <li>Branch managers and operations leaders at mid-size mortgage companies</li>
+                <li>Corporate/compliance teams seeking standardized, compliant marketing collateral</li>
+                <li>Mortgage professionals transitioning into the reverse space</li>
+            </ul>
+
+            <h3>SOPHISTICATION LEVEL</h3>
+            <p>Mid-range. These are sales-driven professionals who understand mortgage terminology but may not be tech-savvy. They need software that "just works" without requiring technical expertise. Heavy emphasis on support and training.</p>
+
+            <h3>EMOTIONAL DRIVERS</h3>
+            <ul>
+                <li><strong>Fear:</strong> "If I'm not on page 1 of Google, I'm invisible"</li>
+                <li><strong>Frustration:</strong> Long sales cycles (9+ months) with leads going cold</li>
+                <li><strong>Overwhelm:</strong> Compliance requirements, regulatory changes, tech complexity</li>
+                <li><strong>Aspiration:</strong> Being the local authority, closing more loans with less effort</li>
+                <li><strong>Identity:</strong> "I'm a reverse mortgage specialist, not a digital marketer"</li>
+            </ul>
+
+            <h3>LANGUAGE SIGNALS</h3>
+            <ul>
+                <li>Industry jargon used freely: HUD, HECM, LOS, pipeline, funded loan, compliance</li>
+                <li>ROI-focused metrics: "cost per funded loan," "80% growth"</li>
+                <li>Relationship language: "referral partners," "nurture leads"</li>
+                <li>Accessibility: No heavy tech jargon; "easy to use," "no hassle"</li>
+                <li>Casual professionalism: "We're here for you," testimonials feel personal</li>
+            </ul>
+        </section>
+
+        <section id="section-04" class="section">
+            <div class="section-header">
+                <span class="section-number">SECTION 04</span>
+                <h2 class="section-title">VISUAL INVENTORY</h2>
+            </div>
+
+            <h3>COLOR</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Role</th>
+                        <th>Color</th>
+                        <th>Assessment</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Primary</td>
+                        <td><span class="color-swatch" style="background: #1E73BE;"></span>#1E73BE (Blue)</td>
+                        <td>Generic "corporate" blue, no distinction</td>
+                    </tr>
+                    <tr>
+                        <td>Secondary</td>
+                        <td><span class="color-swatch" style="background: #FFFFFF;"></span>#FFFFFF (White)</td>
+                        <td>Standard backgrounds</td>
+                    </tr>
+                    <tr>
+                        <td>Accent</td>
+                        <td><span class="color-swatch" style="background: #F4F4F4;"></span>#F4F4F4 (Light gray)</td>
+                        <td>Header background</td>
+                    </tr>
+                    <tr>
+                        <td>CTA</td>
+                        <td><span class="color-swatch" style="background: #E8A317;"></span>#E8A317 (Orange/Gold)</td>
+                        <td>"Start Today" buttons</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p><strong>Assessment:</strong> Generic and forgettable. The blue is indistinguishable from thousands of B2B SaaS sites. No distinctive palette element to own. The orange CTA provides some energy but feels dated.</p>
+
+            <h3>TYPOGRAPHY</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Use</th>
+                        <th>Font</th>
+                        <th>Assessment</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Headlines</td>
+                        <td>Sans-serif (appears system/theme default)</td>
+                        <td>No character</td>
+                    </tr>
+                    <tr>
+                        <td>Body</td>
+                        <td>Sans-serif</td>
+                        <td>Functional but bland</td>
+                    </tr>
+                    <tr>
+                        <td>Logo</td>
+                        <td>Custom emblem + wordmark</td>
+                        <td>Dated treatment</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p><strong>Assessment:</strong> Default WordPress theme typography. No intentional hierarchy. Headlines don't command attention. Body copy is readable but unremarkable. Missing the sophisticated type tension that premium brands employ.</p>
+
+            <h3>LAYOUT & COMPOSITION</h3>
+            <ul>
+                <li><strong>Grid:</strong> Standard WordPress theme structure, primarily centered content</li>
+                <li><strong>Whitespace:</strong> Minimal—sections feel crowded with content, badges, logos</li>
+                <li><strong>Images:</strong> Heavy use of stock photography (seniors on phones, happy couples), GIF animations of software UI, integration partner logos</li>
+                <li><strong>Patterns:</strong> Blue gradient hero sections, white content blocks</li>
+                <li><strong>Icons:</strong> Generic icon sets (checkmarks, bullets)</li>
+            </ul>
+
+            <p><strong>Assessment:</strong> Templated. The structure screams "WordPress theme circa 2018." Oversized hero sections, logo carousels, testimonial sliders—all predictable patterns. No editorial restraint.</p>
+
+            <h3>LOGO & IDENTITY ELEMENTS</h3>
+            <ul>
+                <li>Logo: Emblem-style mark ("RF" letterform) + wordmark</li>
+                <li>Emblem appears in two versions: white on dark, dark on light</li>
+                <li>No supporting graphic system, patterns, or distinctive visual assets</li>
+                <li>Heavy reliance on partner/integration logos for visual interest</li>
+            </ul>
+
+            <p><strong>Assessment:</strong> The emblem has potential but is underutilized. No cohesive identity system—the logo exists in isolation without supporting elements.</p>
+        </section>
+
+        <section id="section-05" class="section">
+            <div class="section-header">
+                <span class="section-number">SECTION 05</span>
+                <h2 class="section-title">MESSAGING AUDIT</h2>
+            </div>
+
+            <h3>HEADLINE STYLE</h3>
+            <p><strong>Homepage hero:</strong> <em>"We've Designed A Winning Toolkit for Reverse Mortgage Originators to Achieve: A Cost Per Funded Loan as Low as $1000"</em></p>
+            <p><strong>Assessment:</strong> Benefit-focused but verbose. The key value prop ($1,000 CPL) is buried. "Winning Toolkit" is generic. The headline tries to do too much.</p>
+
+            <h3>VOICE CHARACTERISTICS</h3>
+            <ul>
+                <li><strong>Tone:</strong> Friendly, supportive, slightly corporate</li>
+                <li><strong>Technical level:</strong> Industry-aware but accessible</li>
+                <li><strong>Confidence:</strong> Moderate—makes claims but hedges with asterisks</li>
+                <li><strong>Personality:</strong> Helpful expert, not cutting-edge innovator</li>
+            </ul>
+
+            <h3>CONSISTENCY</h3>
+            <p>Voice holds reasonably well across pages. The "we're here for you" supportive tone is consistent. Mission/values page elevates slightly with more purposeful language.</p>
+
+            <h3>CLARITY</h3>
+            <p>Can you understand what they do in 5 seconds? <strong>Mostly yes.</strong> The "reverse mortgage" specificity is clear. The three-product offering takes longer to parse. "Software for Reverse" is clear; the specific value takes more effort.</p>
+
+            <h3>DIFFERENTIATION</h3>
+            <p><strong>Assessment:</strong> They sound like other B2B SaaS companies. Nothing in the language signals "category leader." Phrases like "cutting-edge," "purpose-built," "innovative" are generic. The specificity is in the niche (reverse mortgages), not the voice.</p>
+
+            <h3>KEY PHRASES & TAGLINES</h3>
+            <ul>
+                <li><strong>"No lead left behind"</strong> — Best line, memorable, ownable</li>
+                <li><strong>"Purpose-built for Reverse"</strong> — Specific but not distinctive</li>
+                <li><strong>"We're laser focused"</strong> — Generic</li>
+                <li><strong>"70+ years of combined experience"</strong> — Good but functional</li>
+                <li><strong>"Online Dominance"</strong> — Bold product name, underutilized</li>
+            </ul>
+
+            <h3>CTAs</h3>
+            <p><strong>Primary:</strong> "Start Today" (orange button throughout)</p>
+            <p><strong>Secondary:</strong> "Learn More," "Get Started," "Let's Get Started," "Schedule a Demo"</p>
+            <p><strong>Assessment:</strong> CTAs are clear but not particularly compelling. "Start Today" is generic. Opportunity to make CTAs more specific to the promise.</p>
+        </section>
+
+        <section id="section-06" class="section">
+            <div class="section-header">
+                <span class="section-number">SECTION 06</span>
+                <h2 class="section-title">UX ASSESSMENT</h2>
+            </div>
+
+            <h3>NAVIGATION CLARITY</h3>
+            <p><strong>Top nav:</strong> Products (dropdown), Our Company (dropdown), Pricing, FAQs, Blog, CTA button</p>
+            <p><strong>Assessment:</strong> Functional but flat. The dropdown menus work but don't guide priority paths. "Our Company" houses too many disparate items.</p>
+
+            <h3>INFORMATION ARCHITECTURE</h3>
+            <p><strong>Structure:</strong></p>
+            <ul>
+                <li>Home → Products (3 sub-pages) → Pricing → FAQs → Blog → Contact</li>
+                <li>"Our Company" contains: About, Mission/Values, Testimonials, Support, Contact</li>
+            </ul>
+            <p><strong>Assessment:</strong> Logical but uninspired. The three-product structure is clear. Pricing page is transparent (good). However, there's no clear "journey" through the site—it's a brochure, not an experience.</p>
+
+            <h3>INTERACTION DESIGN</h3>
+            <ul>
+                <li>Standard hover states on links and buttons</li>
+                <li>Logo carousels with auto-scroll</li>
+                <li>Testimonial sliders</li>
+                <li>Form fields on contact pages</li>
+                <li>GIF animations showing product interfaces</li>
+            </ul>
+            <p><strong>Assessment:</strong> 2018-era interactions. No memorable micro-interactions. Auto-scrolling carousels are dated. Missing opportunities for delight—hover reveals, scroll-triggered animations, interactive elements.</p>
+
+            <h3>MOBILE EXPERIENCE</h3>
+            <p>Responsive but not mobile-optimized. Standard WordPress theme responsiveness. No evidence of mobile-first design thinking. Navigation collapses to hamburger menu. Readable but not optimized.</p>
+
+            <h3>CONVERSION PATH</h3>
+            <p><strong>Primary:</strong> Land → Browse → "Start Today" → /start or /lets-get-started pages</p>
+            <p>The path exists but feels like a funnel, not a journey. Multiple CTA variations create mild confusion.</p>
+
+            <h3>MEMORABLE MOMENTS</h3>
+            <p><strong>Assessment:</strong> None. The site is functional but forgettable. No "aha" moment, no unexpected interaction, no element that makes you pause. The GIF animations of the software UI are the closest thing to a moment, but they're utilitarian.</p>
+
+            <h3>FRICTION POINTS</h3>
+            <ol>
+                <li>Understanding the product ecosystem takes effort—how do the three products work together?</li>
+                <li>SEO contract requirements (6-12 months) buried in FAQ</li>
+                <li>"Corporate Success Program" is mentioned but not explained on main Products page</li>
+                <li>Testimonials lack video—all text/photo</li>
+                <li>Pricing page is long; bundle comparison requires scrolling</li>
+                <li>No interactive product demos or trials mentioned</li>
+            </ol>
+        </section>
+
+        <section id="section-07" class="section">
+            <div class="section-header">
+                <span class="section-number">SECTION 07</span>
+                <h2 class="section-title">PENTAGRAM/COLLINS LENS</h2>
+            </div>
+
+            <h3>CURRENT STATE</h3>
+            <p>The design is competent but invisible. It's "good enough" WordPress—clean but characterless. There's no tension, no restraint, no editorial point of view. Every element is predictable: blue gradients, stock photos, logo carousels, feature bullets. This is a brand that owns 20% of its market looking like a brand that's trying to break in.</p>
+            <p>The logo emblem (RF mark) has potential—it's geometric and could anchor a more sophisticated system. But it's floating in a sea of generic execution.</p>
+
+            <h3>RECOMMENDATIONS</h3>
+
+            <div class="recommendation">
+                <h4>Typography System</h4>
+                <ul>
+                    <li>Introduce typographic tension: pair a confident serif display face (for headlines that command authority) with a clean sans-serif for body. Consider: Canela or Freight Display + Inter or Söhne.</li>
+                    <li>Establish dramatic scale contrast—massive headlines (72-96pt) against restrained body copy (18pt).</li>
+                    <li>"20% of all reverse mortgage transactions" should be set in type that feels like a fact, not a claim.</li>
+                </ul>
+            </div>
+
+            <div class="recommendation">
+                <h4>Color Refinement</h4>
+                <ul>
+                    <li>Abandon generic corporate blue. Move to a more distinctive palette:
+                        <ul>
+                            <li><strong>Primary:</strong> A deeper, more confident navy or a distinctive teal</li>
+                            <li><strong>Accent:</strong> A warm gold or copper (connotes trust, maturity—appropriate for senior audience)</li>
+                            <li><strong>System:</strong> Rich black (#1A1A1A), warm white (#FAFAFA), and one or two grays</li>
+                        </ul>
+                    </li>
+                    <li>Limit accent color usage to 10% or less for impact</li>
+                </ul>
+            </div>
+
+            <div class="recommendation">
+                <h4>Layout Discipline</h4>
+                <ul>
+                    <li>Embrace asymmetric grids with intentional white space</li>
+                    <li>Remove logo carousels—display integration partners in a static, confident grid</li>
+                    <li>Hero sections should be editorial, not cluttered—one strong image, one strong statement</li>
+                    <li>Introduce 1px divider lines and subtle borders for structure</li>
+                    <li>Consider dark mode elements for sophistication (not the whole site, but sections)</li>
+                </ul>
+            </div>
+
+            <div class="recommendation">
+                <h4>Image Direction</h4>
+                <ul>
+                    <li>Move away from generic stock seniors-on-phones imagery</li>
+                    <li>Commission authentic photography or use more abstract visual metaphors</li>
+                    <li>Consider illustration or data visualization as differentiation</li>
+                    <li>Software UI screenshots should be polished and aspirational, not GIFs</li>
+                </ul>
+            </div>
+
+            <div class="recommendation">
+                <h4>Identity Extension</h4>
+                <ul>
+                    <li>Develop the RF emblem into a pattern system or design asset</li>
+                    <li>Create a distinctive "R" motif that can anchor layouts</li>
+                    <li>Design icons in a consistent, ownable style</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="section-08" class="section">
+            <div class="section-header">
+                <span class="section-number">SECTION 08</span>
+                <h2 class="section-title">ZAG LENS</h2>
+            </div>
+
+            <h3>CURRENT POSITIONING</h3>
+            <p>"We're a software company that serves reverse mortgage originators with websites, SEO, and CRM."</p>
+            <p>This positions them as a vendor, not a category owner.</p>
+
+            <h3>NEUMEIER'S FRAMEWORK</h3>
+            <ol>
+                <li><strong>What are they?</strong> — A vertical SaaS platform</li>
+                <li><strong>What do they do?</strong> — Provide marketing and sales tools for reverse mortgage professionals</li>
+                <li><strong>Who are they for?</strong> — Reverse mortgage loan originators</li>
+                <li><strong>What makes them different?</strong> — Exclusivity (reverse-only), integration depth, industry expertise</li>
+                <li><strong>What do they compete with?</strong> — Generic CRMs (Salesforce, HubSpot), generic website builders, general SEO agencies, doing nothing/manual processes</li>
+            </ol>
+
+            <h3>WHITE SPACE ANALYSIS</h3>
+            <p>What is everyone in the category NOT doing?</p>
+            <ul>
+                <li>Generic CRMs don't understand reverse mortgage sales cycles</li>
+                <li>Generic SEO agencies don't know reverse mortgage keywords</li>
+                <li>Generic website templates aren't pre-compliant with HUD regulations</li>
+                <li>Nobody else owns "reverse" as completely as Reverse Focus does</li>
+            </ul>
+
+            <h3>THE "ONLY" OPPORTUNITY</h3>
+            <p><strong>Current implied positioning:</strong> "We're a marketing software company for reverse mortgage professionals."</p>
+
+            <div class="quote">
+                "Reverse Focus is the ONLY platform that powers the entire reverse mortgage customer journey—from first Google search to funded loan—with tools built by reverse mortgage veterans for reverse mortgage professionals."
+            </div>
+
+            <p>Or more boldly:</p>
+
+            <div class="quote">
+                "Reverse Focus is the ONLY end-to-end operating system for reverse mortgage originators—the infrastructure 1 in 5 reverse loans in America runs on."
+            </div>
+
+            <h3>TENSION TO LEVERAGE</h3>
+            <p><em>"We're small enough to obsess over reverse mortgages, powerful enough to dominate them."</em></p>
+            <p>The tension: Niche focus vs. market leadership. They're not trying to be everything for everyone—and that focus has made them the leader.</p>
+
+            <h3>ENEMY TO POSITION AGAINST</h3>
+            <p>The status quo: Generic software that makes originators explain their business over and over. The inefficiency of cobbling together tools that weren't built for reverse.</p>
+
+            <h3>CATEGORY/METHOD TO OWN</h3>
+            <p>Consider naming what they've built: <strong>"The Reverse Operating System"</strong> or <strong>"The Reverse Stack."</strong></p>
+            <p>This elevates from "we sell products" to "we've built the platform."</p>
+
+            <h3>DIFFERENTIATION STRATEGY</h3>
+            <ol>
+                <li><strong>Lead with dominance, not features.</strong> "20% of reverse loans run on our platform" should be the headline, not buried.</li>
+                <li><strong>Own "Reverse."</strong> The name is already perfect. Lean into it harder. "Reverse Focus" → the focused platform for reverse.</li>
+                <li><strong>Stop selling products; sell the integrated system.</strong> The bundle isn't a discount—it's the whole point. The products are more valuable together.</li>
+                <li><strong>Testimonials should reinforce leadership.</strong> Current testimonials focus on support and features. Get testimonials that say "everyone in reverse uses this" and "this is the industry standard."</li>
+                <li><strong>Create insider language.</strong> "No lead left behind" is good. Build more ownable phrases that originators repeat to each other.</li>
+            </ol>
+        </section>
+
+        <section id="section-09" class="section">
+            <div class="section-header">
+                <span class="section-number">SECTION 09</span>
+                <h2 class="section-title">BRIGHTSCOUT UX LENS</h2>
+            </div>
+
+            <h3>CURRENT EXPERIENCE</h3>
+            <p>Functional but forgettable. The site does its job—it explains products and captures leads—but creates zero memorable moments. It's a digital brochure when it could be an experience that demonstrates the brand's capability.</p>
+
+            <h3>INNOVATION OPPORTUNITIES</h3>
+
+            <div class="recommendation">
+                <h4>1. Interactive Market Position Visualization</h4>
+                <p>Build a real-time (or updated) visualization showing "1 in 5 reverse loans runs on Reverse Focus." Make the dominance tangible. Show a map of the US with funded loans pulsing. Make visitors feel the scale.</p>
+            </div>
+
+            <div class="recommendation">
+                <h4>2. "Calculate Your Dominance" Tool</h4>
+                <p>Interactive calculator: Enter your market, see current reverse mortgage search volume, competition, and what's achievable with Online Dominance. Personalize the value prop.</p>
+            </div>
+
+            <div class="recommendation">
+                <h4>3. Integrated Product Demo Flow</h4>
+                <p>Create an interactive journey showing how a lead flows from Google search → Website → Sales Engine CRM → Funded Loan. Demonstrate the ecosystem, not just the parts. Use scroll-triggered animations to reveal each stage.</p>
+            </div>
+
+            <div class="recommendation">
+                <h4>4. Video Testimonials with Metrics</h4>
+                <p>Replace text testimonials with short video clips. Include real metrics: "From X to Y in Z months." Make success feel achievable and human.</p>
+            </div>
+
+            <div class="recommendation">
+                <h4>5. "See a Client Site in Your Market" Tool</h4>
+                <p>Allow visitors to enter their city and see an example website already ranking for that market. Proof that the system works, personalized.</p>
+            </div>
+
+            <div class="recommendation">
+                <h4>6. Onboarding Experience Preview</h4>
+                <p>Show what the first 30 days looks like. Timeline visualization of setup, training, first leads. Reduce anxiety about "what happens after I sign up."</p>
+            </div>
+
+            <div class="recommendation">
+                <h4>7. Competitive Comparison (Done Right)</h4>
+                <p>Most comparison pages are self-serving garbage. Create an honest "When to use us vs. alternatives" page that acknowledges generic CRMs are fine for some use cases—but if you're serious about reverse, you need the specialized stack.</p>
+            </div>
+
+            <div class="recommendation">
+                <h4>8. Progress Indicators</h4>
+                <p>For the sales cycle reality (9+ months), create content that helps originators understand and navigate that journey. A "Reverse Mortgage Sales Cycle Timeline" could be valuable content and a brand asset.</p>
+            </div>
+
+            <h3>MEMORY PEAK MOMENT</h3>
+            <p>Create ONE unforgettable moment. Suggestion: When visitor scrolls past the "20% of reverse loans" stat, trigger an animation that fills the screen with a visualization of scale—dots appearing, map lighting up, numbers counting. Then resolve to: "Ready to be part of it?" This creates the "peak" that visitors remember.</p>
+
+            <h3>FRICTION AUDIT</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Friction</th>
+                        <th>Fix</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Three products feel disconnected</td>
+                        <td>Create unified "stack" narrative and visualization</td>
+                    </tr>
+                    <tr>
+                        <td>Pricing page is long scroll</td>
+                        <td>Add sticky comparison nav or accordion</td>
+                    </tr>
+                    <tr>
+                        <td>No product trial/demo</td>
+                        <td>Offer sandbox or video walkthrough</td>
+                    </tr>
+                    <tr>
+                        <td>"Corporate Success Program" is hidden</td>
+                        <td>Either feature prominently or remove from main nav</td>
+                    </tr>
+                    <tr>
+                        <td>CTA text is generic</td>
+                        <td>Make CTAs specific: "See your market's potential" vs. "Start Today"</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="section-10" class="section">
+            <div class="section-header">
+                <span class="section-number">SECTION 10</span>
+                <h2 class="section-title">BRAND HOUSE BRIEF</h2>
+            </div>
+
+            <h3>CLIENT</h3>
+            <p>Reverse Focus</p>
+
+            <h3>INDUSTRY</h3>
+            <p>FinTech / Vertical SaaS / Mortgage Technology</p>
+
+            <h3>TIER RECOMMENDATION</h3>
+            <p><strong>Premium</strong> — This is a category leader that needs a brand to match its market position.</p>
+
+            <h3>BRAND COLORS (Recommended)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Role</th>
+                        <th>Hex</th>
+                        <th>Rationale</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Primary</td>
+                        <td><span class="color-swatch" style="background: #0A2540;"></span>#0A2540</td>
+                        <td>Deep navy—confident, financial, sophisticated</td>
+                    </tr>
+                    <tr>
+                        <td>Secondary</td>
+                        <td><span class="color-swatch" style="background: #CFA052;"></span>#CFA052</td>
+                        <td>Warm gold—trust, maturity, premium</td>
+                    </tr>
+                    <tr>
+                        <td>Background Light</td>
+                        <td><span class="color-swatch" style="background: #FAFAFA;"></span>#FAFAFA</td>
+                        <td>Warm white</td>
+                    </tr>
+                    <tr>
+                        <td>Background Dark</td>
+                        <td><span class="color-swatch" style="background: #1A1A1A;"></span>#1A1A1A</td>
+                        <td>Rich black for contrast sections</td>
+                    </tr>
+                    <tr>
+                        <td>Text</td>
+                        <td><span class="color-swatch" style="background: #374151;"></span>#374151</td>
+                        <td>Readable dark gray</td>
+                    </tr>
+                    <tr>
+                        <td>Accent</td>
+                        <td><span class="color-swatch" style="background: #10B981;"></span>#10B981</td>
+                        <td>Subtle green for growth/success metrics</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>TYPOGRAPHY (Recommended)</h3>
+            <ul>
+                <li><strong>Display:</strong> Canela or Freight Display (confident serif)</li>
+                <li><strong>Headlines:</strong> Inter or Söhne (modern sans-serif)</li>
+                <li><strong>Body:</strong> Inter at 18px</li>
+                <li><strong>Monospace:</strong> For data/metrics displays</li>
+            </ul>
+
+            <h3>PERSONALITY</h3>
+            <ul>
+                <li>Authoritative but approachable</li>
+                <li>Specialized expert, not generic vendor</li>
+                <li>Quietly confident (leads with facts, not hype)</li>
+                <li>Community-minded (originators helping originators)</li>
+                <li>Efficient and no-nonsense</li>
+            </ul>
+
+            <h3>TARGET AUDIENCE</h3>
+            <p>Primary: Independent reverse mortgage loan originators and small teams who want to compete against larger players without becoming marketing experts.</p>
+
+            <h3>THE ZAG</h3>
+            <div class="quote">
+                "Reverse Focus is the ONLY end-to-end operating system for reverse mortgage originators—the infrastructure 1 in 5 reverse loans in America runs on."
+            </div>
+
+            <h4>Key differentiators to amplify:</h4>
+            <ul>
+                <li>Category exclusivity (reverse-only)</li>
+                <li>Market share dominance (20% of transactions)</li>
+                <li>Integration depth (full-cycle coverage)</li>
+                <li>Industry credibility (built by reverse mortgage veterans)</li>
+            </ul>
+
+            <h3>UX SIGNATURE MOMENTS</h3>
+            <ol>
+                <li>Market dominance visualization (scale made tangible)</li>
+                <li>Integrated product flow demonstration (ecosystem, not parts)</li>
+                <li>Personalized market potential calculator</li>
+                <li>Video success stories with real metrics</li>
+            </ol>
+
+            <h3>SPECIAL REQUIREMENTS</h3>
+            <ul>
+                <li>Mobile optimization for on-the-go originators</li>
+                <li>Compliance messaging must be clear but not overwhelming</li>
+                <li>Integration partner display should feel prestigious, not cluttered</li>
+                <li>Clear bundle/total package positioning as the "right" choice</li>
+                <li>Support/accessibility should be prominent (this audience values it)</li>
+            </ul>
+        </section>
+    </div>
+
+    <footer class="footer">
+        <hr class="footer-divider">
+        <p><strong>END OF DISCOVERY DOCUMENT</strong></p>
+        <p>Prepared by Look Serious Brand Strategy</p>
+        <p style="opacity: 0.7; margin-top: 1rem;">January 16, 2026</p>
+    </footer>
+</body>
+</html>
