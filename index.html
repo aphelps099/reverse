@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reverse Focus | Brand House</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --navy: #1E3A5F;
+            --maroon: #7B2D42;
+            --silver: #C0C0C0;
+            --bg-light: #F5F5F5;
+            --bg-dark: #1A1A2E;
+            --text: #2D3748;
+            --white: #FFFFFF;
+            --gold-accent: #CFA052;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--white);
+            font-size: 18px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(30, 58, 95, 0.1);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        nav .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--navy);
+            text-decoration: none;
+        }
+
+        nav .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        nav .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav .nav-links a:hover {
+            color: var(--maroon);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--bg-dark) 100%);
+            color: var(--white);
+            padding: 6rem 2rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(123, 45, 66, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(192, 192, 192, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 1000px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: rgba(123, 45, 66, 0.2);
+            border: 1px solid var(--maroon);
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            color: var(--gold-accent);
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero .stat-line {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-weight: 700;
+            color: var(--gold-accent);
+            margin: 2rem 0;
+            letter-spacing: -0.01em;
+        }
+
+        .hero .subtitle {
+            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+            line-height: 1.6;
+            opacity: 0.9;
+            margin-bottom: 3rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-scroll {
+            margin-top: 4rem;
+            font-size: 0.875rem;
+            opacity: 0.6;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 6rem 0;
+        }
+
+        section.dark {
+            background: var(--bg-dark);
+            color: var(--white);
+        }
+
+        section.light-gray {
+            background: var(--bg-light);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-tag {
+            display: inline-block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--maroon);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            color: var(--navy);
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .dark .section-title {
+            color: var(--white);
+        }
+
+        .section-subtitle {
+            font-size: 1.25rem;
+            line-height: 1.7;
+            color: var(--text);
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.8;
+        }
+
+        .dark .section-subtitle {
+            color: var(--white);
+        }
+
+        /* The ZAG */
+        .zag-statement {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.75rem, 3.5vw, 3rem);
+            line-height: 1.4;
+            color: var(--navy);
+            text-align: center;
+            max-width: 1000px;
+            margin: 3rem auto;
+            padding: 3rem;
+            background: var(--white);
+            border-left: 6px solid var(--maroon);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            font-style: italic;
+            font-weight: 700;
+        }
+
+        .zag-statement em {
+            color: var(--maroon);
+            font-style: normal;
+        }
+
+        /* Color Palette */
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .color-card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .color-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        }
+
+        .color-swatch {
+            height: 180px;
+            width: 100%;
+            position: relative;
+        }
+
+        .color-info {
+            padding: 1.5rem;
+        }
+
+        .color-name {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+
+        .color-hex {
+            font-family: 'Courier New', monospace;
+            font-size: 0.95rem;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+        }
+
+        .color-usage {
+            font-size: 0.875rem;
+            color: var(--text);
+            opacity: 0.7;
+            line-height: 1.5;
+        }
+
+        /* Typography */
+        .type-showcase {
+            margin-top: 3rem;
+        }
+
+        .type-example {
+            padding: 3rem;
+            background: var(--white);
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .type-label {
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--maroon);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .display-font {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+
+        .body-font {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.125rem;
+            line-height: 1.7;
+            color: var(--text);
+        }
+
+        .font-details {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(0,0,0,0.1);
+            font-size: 0.875rem;
+            color: var(--text);
+            opacity: 0.6;
+        }
+
+        /* Products Stack */
+        .stack-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .product-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 12px;
+            border-top: 4px solid var(--maroon);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+        }
+
+        .product-number {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--maroon);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+
+        .product-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--navy);
+            margin-bottom: 1rem;
+        }
+
+        .product-description {
+            color: var(--text);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .product-price {
+            font-weight: 700;
+            color: var(--maroon);
+            font-size: 1.1rem;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 2.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--gold-accent);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.95rem;
+            opacity: 0.8;
+            line-height: 1.5;
+        }
+
+        /* Voice & Tone */
+        .personality-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .personality-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--maroon);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .personality-title {
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--navy);
+            margin-bottom: 1rem;
+        }
+
+        .personality-description {
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        /* Audience */
+        .audience-content {
+            max-width: 900px;
+            margin: 3rem auto;
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .audience-label {
+            font-weight: 700;
+            color: var(--maroon);
+            text-transform: uppercase;
+            font-size: 0.875rem;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+
+        .audience-description {
+            font-size: 1.25rem;
+            line-height: 1.7;
+            color: var(--navy);
+            margin-bottom: 2rem;
+            font-weight: 500;
+        }
+
+        .audience-needs {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .audience-needs li {
+            padding-left: 2rem;
+            position: relative;
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .audience-needs li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--maroon);
+            font-weight: 700;
+        }
+
+        /* Tagline */
+        .tagline-showcase {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, var(--maroon) 0%, #5A1F30 100%);
+            border-radius: 12px;
+            margin: 3rem 0;
+        }
+
+        .tagline-text {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 800;
+            color: var(--white);
+            line-height: 1.3;
+        }
+
+        /* Client Logos */
+        .clients-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            align-items: center;
+        }
+
+        .client-logo {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-dark);
+            color: var(--white);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        footer .divider {
+            width: 100px;
+            height: 3px;
+            background: var(--maroon);
+            margin: 2rem auto;
+        }
+
+        footer p {
+            opacity: 0.7;
+            font-size: 0.95rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding: 5rem 1.5rem 3rem;
+            }
+
+            section {
+                padding: 4rem 0;
+            }
+
+            .color-grid,
+            .stack-grid,
+            .stats-grid,
+            .personality-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .audience-content {
+                padding: 2rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-in {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <a href="#" class="logo">Reverse Focus</a>
+            <ul class="nav-links">
+                <li><a href="#positioning">Positioning</a></li>
+                <li><a href="#brand">Brand</a></li>
+                <li><a href="#stack">The Stack</a></li>
+                <li><a href="#voice">Voice</a></li>
+                <li><a href="#audience">Audience</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-tag">Brand House</div>
+            <h1>Reverse Focus</h1>
+            <div class="stat-line">1 in 5 reverse loans run on our platform</div>
+            <p class="subtitle">The end-to-end operating system for reverse mortgage originators—the infrastructure powering 20% of reverse mortgage transactions in America.</p>
+            <div class="hero-scroll">↓ Scroll to explore</div>
+        </div>
+    </section>
+
+    <!-- Positioning Section -->
+    <section id="positioning" class="light-gray">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">The ZAG</div>
+                <h2 class="section-title">Our Position</h2>
+            </div>
+            <div class="zag-statement">
+                Reverse Focus is the <em>ONLY</em> end-to-end operating system for reverse mortgage originators—the infrastructure <em>1 in 5 reverse loans</em> in America runs on.
+            </div>
+        </div>
+    </section>
+
+    <!-- Brand Story -->
+    <section id="story">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">Our Story</div>
+                <h2 class="section-title">Built by Reverse Mortgage Veterans</h2>
+                <p class="section-subtitle">We're not a generic software company trying to serve everyone. We're reverse mortgage specialists who built the exact platform we needed—and now we power the industry.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Color Palette -->
+    <section id="brand" class="light-gray">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">Visual Identity</div>
+                <h2 class="section-title">Brand Colors</h2>
+                <p class="section-subtitle">A sophisticated palette that conveys authority, trust, and category leadership.</p>
+            </div>
+            <div class="color-grid">
+                <div class="color-card">
+                    <div class="color-swatch" style="background: #1E3A5F;"></div>
+                    <div class="color-info">
+                        <div class="color-name">Navy</div>
+                        <div class="color-hex">#1E3A5F</div>
+                        <div class="color-usage">Primary brand color. Used for headers, key elements, and authoritative statements.</div>
+                    </div>
+                </div>
+                <div class="color-card">
+                    <div class="color-swatch" style="background: #7B2D42;"></div>
+                    <div class="color-info">
+                        <div class="color-name">Maroon</div>
+                        <div class="color-hex">#7B2D42</div>
+                        <div class="color-usage">Secondary accent. CTAs, emphasis, and visual hierarchy markers.</div>
+                    </div>
+                </div>
+                <div class="color-card">
+                    <div class="color-swatch" style="background: #C0C0C0;"></div>
+                    <div class="color-info">
+                        <div class="color-name">Silver</div>
+                        <div class="color-hex">#C0C0C0</div>
+                        <div class="color-usage">Tertiary accent. Borders, subtle accents, and refined details.</div>
+                    </div>
+                </div>
+                <div class="color-card">
+                    <div class="color-swatch" style="background: #1A1A2E;"></div>
+                    <div class="color-info">
+                        <div class="color-name">Deep Dark Blue</div>
+                        <div class="color-hex">#1A1A2E</div>
+                        <div class="color-usage">Dark backgrounds for contrast sections and premium feel.</div>
+                    </div>
+                </div>
+                <div class="color-card">
+                    <div class="color-swatch" style="background: #F5F5F5;"></div>
+                    <div class="color-info">
+                        <div class="color-name">Light Gray</div>
+                        <div class="color-hex">#F5F5F5</div>
+                        <div class="color-usage">Light backgrounds, section breaks, and subtle contrast.</div>
+                    </div>
+                </div>
+                <div class="color-card">
+                    <div class="color-swatch" style="background: #2D3748;"></div>
+                    <div class="color-info">
+                        <div class="color-name">Text Gray</div>
+                        <div class="color-hex">#2D3748</div>
+                        <div class="color-usage">Primary text color for body copy and descriptions.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Typography -->
+    <section id="typography">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">Typography</div>
+                <h2 class="section-title">Font System</h2>
+                <p class="section-subtitle">Typographic tension: confident serif headlines paired with clean, accessible body copy.</p>
+            </div>
+            <div class="type-showcase">
+                <div class="type-example">
+                    <div class="type-label">Display & Headlines</div>
+                    <div class="display-font">Playfair Display</div>
+                    <div class="font-details">
+                        Weights: 700 (Bold), 800 (Extra Bold), 900 (Black)<br>
+                        Usage: Hero headlines, section titles, key statements that demand authority
+                    </div>
+                </div>
+                <div class="type-example">
+                    <div class="type-label">Body & Interface</div>
+                    <div class="body-font">
+                        <strong>Inter</strong> — Clean, modern sans-serif for exceptional readability.<br>
+                        The quick brown fox jumps over the lazy dog. 1234567890
+                    </div>
+                    <div class="font-details">
+                        Weights: 400 (Regular), 500 (Medium), 600 (Semibold), 700 (Bold)<br>
+                        Base size: 18px | Line height: 1.7<br>
+                        Usage: Body copy, navigation, UI elements, captions
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Stack -->
+    <section id="stack" class="light-gray">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">Products</div>
+                <h2 class="section-title">The Reverse Stack</h2>
+                <p class="section-subtitle">Not separate products—an integrated operating system for the entire reverse mortgage customer journey.</p>
+            </div>
+            <div class="stack-grid">
+                <div class="product-card">
+                    <div class="product-number">01 — Attract</div>
+                    <h3 class="product-name">MyLoanOfficer.us<br>Websites</h3>
+                    <p class="product-description">Turnkey, compliance-ready websites with lead capture, mortgage calculators, and educational content. Your local authority starts here.</p>
+                    <div class="product-price">$129/mo + $300 setup</div>
+                </div>
+                <div class="product-card">
+                    <div class="product-number">02 — Dominate</div>
+                    <h3 class="product-name">Online Dominance<br>SEO</h3>
+                    <p class="product-description">Local search optimization targeting reverse-mortgage-specific keywords. Cost per funded loan as low as $1,000.</p>
+                    <div class="product-price">$295/mo + $1,000 setup</div>
+                </div>
+                <div class="product-card">
+                    <div class="product-number">03 — Convert</div>
+                    <h3 class="product-name">Sales Engine<br>CRM</h3>
+                    <p class="product-description">Purpose-built CRM with workflow automation, LOS integration (ReverseVision, Encompass), email sequencing, and referral partner management.</p>
+                    <div class="product-price">$109/mo + $150 setup</div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: white; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+                <div style="font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 800; color: var(--navy); margin-bottom: 0.5rem;">
+                    Total Package
+                </div>
+                <div style="font-size: 1.5rem; font-weight: 700; color: var(--maroon); margin-bottom: 1rem;">
+                    $450/mo
+                </div>
+                <div style="color: var(--text); opacity: 0.7;">
+                    The complete operating system. Month-to-month. 15% discount with annual payment.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Proof Points -->
+    <section id="proof" class="dark">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag" style="color: var(--gold-accent);">Credibility</div>
+                <h2 class="section-title">Proof Points</h2>
+                <p class="section-subtitle">Market dominance backed by real numbers.</p>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-number">20%</span>
+                    <span class="stat-label">Of all reverse mortgage<br>transactions in America</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">7,000+</span>
+                    <span class="stat-label">Loans funded<br>annually</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">100K+</span>
+                    <span class="stat-label">Emails sent<br>monthly</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">70+</span>
+                    <span class="stat-label">Years combined<br>team experience</span>
+                </div>
+            </div>
+            <div class="section-header" style="margin-top: 5rem;">
+                <div class="section-tag" style="color: var(--gold-accent);">Trusted By</div>
+                <h3 class="section-title" style="font-size: 2rem;">Industry Leaders</h3>
+            </div>
+            <div class="clients-grid">
+                <div class="client-logo">Fairway</div>
+                <div class="client-logo">Longbridge</div>
+                <div class="client-logo">C2</div>
+                <div class="client-logo">Norcom</div>
+                <div class="client-logo">RFS</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Voice & Tone -->
+    <section id="voice">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">Communication</div>
+                <h2 class="section-title">Voice & Personality</h2>
+                <p class="section-subtitle">How we sound, how we act, how we show up in every interaction.</p>
+            </div>
+            <div class="personality-grid">
+                <div class="personality-card">
+                    <div class="personality-title">Authoritative but Approachable</div>
+                    <p class="personality-description">We lead with facts and expertise, but we're here to help—not intimidate. We're the trusted advisor, not the aloof expert.</p>
+                </div>
+                <div class="personality-card">
+                    <div class="personality-title">Quietly Confident</div>
+                    <p class="personality-description">We don't need hype. Our numbers speak for themselves. 20% market share is a fact, not a boast.</p>
+                </div>
+                <div class="personality-card">
+                    <div class="personality-title">Specialized Expert</div>
+                    <p class="personality-description">We're not a generic vendor. We're reverse mortgage people who built reverse mortgage software. The difference shows.</p>
+                </div>
+                <div class="personality-card">
+                    <div class="personality-title">Community-Minded</div>
+                    <p class="personality-description">Originators helping originators. We succeed when our clients succeed. It's that simple.</p>
+                </div>
+                <div class="personality-card">
+                    <div class="personality-title">Efficient & No-Nonsense</div>
+                    <p class="personality-description">We respect your time. Clear communication. No jargon unless it's industry terminology you already know.</p>
+                </div>
+                <div class="personality-card">
+                    <div class="personality-title">Industry-Aware</div>
+                    <p class="personality-description">We speak your language: HUD, HECM, LOS, pipeline, funded loan. You don't have to explain your business to us.</p>
+                </div>
+            </div>
+            <div class="tagline-showcase">
+                <div class="tagline-text">"No lead left behind"</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Target Audience -->
+    <section id="audience" class="light-gray">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">Who We Serve</div>
+                <h2 class="section-title">Target Audience</h2>
+            </div>
+            <div class="audience-content">
+                <div class="audience-label">Primary Audience</div>
+                <div class="audience-description">
+                    Independent reverse mortgage loan originators and small teams who want to compete against larger players without becoming marketing experts.
+                </div>
+                <div class="audience-label">What They Need</div>
+                <ul class="audience-needs">
+                    <li>Generate more leads locally without complex marketing expertise</li>
+                    <li>Maintain compliance without legal headaches or constant oversight</li>
+                    <li>Automate follow-up over the 9+ month average sales cycle</li>
+                    <li>Compete against larger, better-funded competitors on equal footing</li>
+                    <li>Reduce cost per acquisition and improve ROI predictability</li>
+                    <li>Software that "just works" without requiring technical expertise</li>
+                </ul>
+                <div class="audience-label" style="margin-top: 2rem;">Their Identity</div>
+                <div class="audience-description" style="font-style: italic;">
+                    "I'm a reverse mortgage specialist, not a digital marketer."
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div style="font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 800; margin-bottom: 1rem;">
+                Reverse Focus
+            </div>
+            <div class="divider"></div>
+            <p>Brand House — Visual Identity & Positioning Guidelines</p>
+            <p style="margin-top: 1rem;">The infrastructure 1 in 5 reverse loans runs on</p>
+            <p style="margin-top: 2rem; font-size: 0.875rem;">© 2026 Reverse Focus. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offset = 80;
+                    const targetPosition = target.offsetTop - offset;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Simple fade-in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
