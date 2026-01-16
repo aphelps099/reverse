@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reverse Focus — Brand House</title>
+    <link href="https://fonts.cdnfonts.com/css/futura-std-4" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --navy: #0A2540;
+            --gold: #CFA052;
+            --bg: #FAFAFA;
+            --black: #1A1A1A;
+            --gray: #374151;
+            --light: #E5E7EB;
+            --green: #10B981;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Futura', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: var(--gray);
+            background: var(--bg);
+        }
+
+        /* Typography */
+        h1, h2, h3 {
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--light);
+            z-index: 1000;
+        }
+
+        nav .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--navy);
+            text-decoration: none;
+            letter-spacing: 0.02em;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        nav a {
+            color: var(--gray);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            letter-spacing: 0.01em;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--navy);
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: var(--navy);
+            color: white;
+            padding: 8rem 2rem 4rem;
+        }
+
+        .hero .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .hero-tag {
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(4rem, 12vw, 9rem);
+            font-weight: 700;
+            line-height: 0.95;
+            margin-bottom: 3rem;
+        }
+
+        .hero-stat {
+            font-size: clamp(1.75rem, 4vw, 3rem);
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 3rem;
+            letter-spacing: -0.01em;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            max-width: 700px;
+            line-height: 1.6;
+            opacity: 0.85;
+        }
+
+        /* Sections */
+        section {
+            padding: 8rem 2rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            color: var(--navy);
+            margin-bottom: 2rem;
+            line-height: 1.1;
+        }
+
+        .section-intro {
+            font-size: 1.25rem;
+            max-width: 800px;
+            margin-bottom: 4rem;
+            line-height: 1.7;
+        }
+
+        /* UX Assessment */
+        .ux-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .ux-item h3 {
+            font-size: 1.25rem;
+            color: var(--navy);
+            margin-bottom: 1rem;
+        }
+
+        .ux-item p {
+            line-height: 1.7;
+            color: var(--gray);
+        }
+
+        .ux-verdict {
+            display: inline-block;
+            margin-top: 0.5rem;
+            padding: 0.25rem 0.75rem;
+            background: #FEF3C7;
+            border-left: 3px solid var(--gold);
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        /* ZAG Framework */
+        .zag-only {
+            background: white;
+            padding: 4rem;
+            border-left: 6px solid var(--gold);
+            margin: 4rem 0;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.08);
+        }
+
+        .zag-only .statement {
+            font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+            line-height: 1.4;
+            color: var(--navy);
+            font-weight: 700;
+        }
+
+        .zag-only .statement em {
+            color: var(--gold);
+            font-style: normal;
+        }
+
+        .framework-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .framework-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 4px;
+            border-top: 3px solid var(--navy);
+        }
+
+        .framework-item h4 {
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--gold);
+            margin-bottom: 0.75rem;
+        }
+
+        .framework-item p {
+            color: var(--navy);
+            font-weight: 600;
+            font-size: 1.125rem;
+        }
+
+        /* Pentagram Lens */
+        .design-rec {
+            background: white;
+            padding: 3rem;
+            margin: 2rem 0;
+            border-left: 4px solid var(--green);
+        }
+
+        .design-rec h3 {
+            color: var(--navy);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .design-rec ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .design-rec li {
+            padding-left: 1.5rem;
+            position: relative;
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .design-rec li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--green);
+            font-weight: 700;
+        }
+
+        /* Brightscout Lens */
+        .innovation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .innovation-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 4px;
+            transition: transform 0.3s;
+        }
+
+        .innovation-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .innovation-card h4 {
+            font-size: 1.25rem;
+            color: var(--navy);
+            margin-bottom: 1rem;
+        }
+
+        .innovation-card p {
+            line-height: 1.7;
+            color: var(--gray);
+        }
+
+        .innovation-label {
+            display: inline-block;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        /* Friction Table */
+        .friction-table {
+            width: 100%;
+            margin: 3rem 0;
+            border-collapse: collapse;
+            background: white;
+        }
+
+        .friction-table th {
+            background: var(--navy);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .friction-table td {
+            padding: 1.25rem 1rem;
+            border-bottom: 1px solid var(--light);
+            line-height: 1.6;
+        }
+
+        .friction-table tr:hover {
+            background: var(--bg);
+        }
+
+        /* Dark Section */
+        .dark {
+            background: var(--black);
+            color: white;
+        }
+
+        .dark .section-title {
+            color: white;
+        }
+
+        /* Market Visualization */
+        .market-viz {
+            background: var(--navy);
+            padding: 6rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .market-viz .number {
+            font-size: clamp(6rem, 15vw, 12rem);
+            font-weight: 700;
+            color: var(--gold);
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+
+        .market-viz .label {
+            font-size: 1.5rem;
+            color: white;
+            opacity: 0.9;
+        }
+
+        .market-viz .dots {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            gap: 1rem;
+            max-width: 600px;
+            margin: 3rem auto 0;
+        }
+
+        .market-viz .dot {
+            aspect-ratio: 1;
+            border-radius: 50%;
+            background: rgba(207, 160, 82, 0.2);
+            border: 2px solid var(--gold);
+        }
+
+        .market-viz .dot.active {
+            background: var(--gold);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        /* Footer */
+        footer {
+            background: var(--black);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        footer .divider {
+            width: 80px;
+            height: 3px;
+            background: var(--gold);
+            margin: 2rem auto;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+
+            section {
+                padding: 4rem 1.5rem;
+            }
+
+            .hero {
+                padding: 6rem 1.5rem 3rem;
+            }
+
+            .ux-grid,
+            .framework-grid,
+            .innovation-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .friction-table {
+                font-size: 0.875rem;
+            }
+
+            .friction-table th,
+            .friction-table td {
+                padding: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="#" class="logo">REVERSE FOCUS</a>
+            <ul>
+                <li><a href="#ux">UX Assessment</a></li>
+                <li><a href="#pentagram">Design</a></li>
+                <li><a href="#zag">Positioning</a></li>
+                <li><a href="#brightscout">Innovation</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-tag">Brand House</div>
+            <h1>20%</h1>
+            <div class="hero-stat">of reverse mortgage transactions<br>run on our platform</div>
+            <p class="hero-subtitle">Strategic analysis and recommendations for the category leader that needs a brand to match its market dominance.</p>
+        </div>
+    </section>
+
+    <!-- UX Assessment -->
+    <section id="ux">
+        <div class="container">
+            <div class="section-label">Current State Analysis</div>
+            <h2 class="section-title">UX Assessment</h2>
+            <p class="section-intro">The gap between market dominance (20%+ of transactions) and brand presence (generic B2B SaaS) is massive—and exploitable by competitors.</p>
+
+            <div class="ux-grid">
+                <div class="ux-item">
+                    <h3>Navigation Clarity</h3>
+                    <p>Products (dropdown), Our Company (dropdown), Pricing, FAQs, Blog, CTA button</p>
+                    <div class="ux-verdict">Functional but flat</div>
+                </div>
+
+                <div class="ux-item">
+                    <h3>Information Architecture</h3>
+                    <p>Home → Products (3 sub-pages) → Pricing → FAQs → Blog → Contact</p>
+                    <div class="ux-verdict">Logical but uninspired</div>
+                </div>
+
+                <div class="ux-item">
+                    <h3>Interaction Design</h3>
+                    <p>Standard hover states, logo carousels with auto-scroll, testimonial sliders, GIF animations</p>
+                    <div class="ux-verdict">2018-era interactions</div>
+                </div>
+
+                <div class="ux-item">
+                    <h3>Mobile Experience</h3>
+                    <p>Responsive but not mobile-optimized. Standard WordPress theme responsiveness.</p>
+                    <div class="ux-verdict">Readable but not optimized</div>
+                </div>
+
+                <div class="ux-item">
+                    <h3>Conversion Path</h3>
+                    <p>Land → Browse → "Start Today" → /start or /lets-get-started pages</p>
+                    <div class="ux-verdict">Feels like a funnel, not a journey</div>
+                </div>
+
+                <div class="ux-item">
+                    <h3>Memorable Moments</h3>
+                    <p>None. The site is functional but forgettable.</p>
+                    <div class="ux-verdict">No "aha" moment</div>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 5rem; font-size: 2rem; color: var(--navy); margin-bottom: 2rem;">Friction Points</h3>
+            <table class="friction-table">
+                <thead>
+                    <tr>
+                        <th>Friction</th>
+                        <th>Fix</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Three products feel disconnected</td>
+                        <td>Create unified "stack" narrative and visualization</td>
+                    </tr>
+                    <tr>
+                        <td>Understanding product ecosystem takes effort</td>
+                        <td>Show how products work together visually</td>
+                    </tr>
+                    <tr>
+                        <td>SEO contract requirements buried in FAQ</td>
+                        <td>Surface commitment expectations upfront</td>
+                    </tr>
+                    <tr>
+                        <td>Testimonials lack video</td>
+                        <td>Add video testimonials with real metrics</td>
+                    </tr>
+                    <tr>
+                        <td>Pricing page is long scroll</td>
+                        <td>Add sticky comparison nav or accordion</td>
+                    </tr>
+                    <tr>
+                        <td>No interactive product demos</td>
+                        <td>Offer sandbox or video walkthrough</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Market Visualization -->
+    <div class="market-viz">
+        <div class="number">1 in 5</div>
+        <div class="label">reverse mortgage loans in America</div>
+        <div class="dots">
+            <div class="dot active"></div>
+            <div class="dot active"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+    </div>
+
+    <!-- ZAG Lens -->
+    <section id="zag">
+        <div class="container">
+            <div class="section-label">Lens 02 — Neumeier Differentiation</div>
+            <h2 class="section-title">ZAG: Positioning</h2>
+            <p class="section-intro">What makes them the "only"?</p>
+
+            <div class="zag-only">
+                <div class="statement">
+                    Reverse Focus is the <em>ONLY</em> end-to-end operating system for reverse mortgage originators—the infrastructure <em>1 in 5 reverse loans</em> in America runs on.
+                </div>
+            </div>
+
+            <h3 style="margin-top: 5rem; font-size: 2rem; color: var(--navy); margin-bottom: 2rem;">Neumeier's Framework</h3>
+            <div class="framework-grid">
+                <div class="framework-item">
+                    <h4>What are they?</h4>
+                    <p>A vertical SaaS platform</p>
+                </div>
+                <div class="framework-item">
+                    <h4>What do they do?</h4>
+                    <p>Provide marketing and sales tools for reverse mortgage professionals</p>
+                </div>
+                <div class="framework-item">
+                    <h4>Who are they for?</h4>
+                    <p>Reverse mortgage loan originators</p>
+                </div>
+                <div class="framework-item">
+                    <h4>What makes them different?</h4>
+                    <p>Exclusivity (reverse-only), integration depth, industry expertise</p>
+                </div>
+                <div class="framework-item">
+                    <h4>What do they compete with?</h4>
+                    <p>Generic CRMs, website builders, SEO agencies, manual processes</p>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 5rem; font-size: 2rem; color: var(--navy); margin-bottom: 2rem;">White Space Analysis</h3>
+            <div style="background: white; padding: 3rem; border-left: 4px solid var(--gold);">
+                <p style="font-size: 1.25rem; line-height: 1.7; color: var(--navy); font-weight: 600; margin-bottom: 1.5rem;">What is everyone in the category NOT doing?</p>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="padding-left: 1.5rem; position: relative; margin-bottom: 1rem; line-height: 1.7;">
+                        <span style="position: absolute; left: 0; color: var(--gold); font-weight: 700;">→</span>
+                        Generic CRMs don't understand reverse mortgage sales cycles
+                    </li>
+                    <li style="padding-left: 1.5rem; position: relative; margin-bottom: 1rem; line-height: 1.7;">
+                        <span style="position: absolute; left: 0; color: var(--gold); font-weight: 700;">→</span>
+                        Generic SEO agencies don't know reverse mortgage keywords
+                    </li>
+                    <li style="padding-left: 1.5rem; position: relative; margin-bottom: 1rem; line-height: 1.7;">
+                        <span style="position: absolute; left: 0; color: var(--gold); font-weight: 700;">→</span>
+                        Generic website templates aren't pre-compliant with HUD regulations
+                    </li>
+                    <li style="padding-left: 1.5rem; position: relative; margin-bottom: 1rem; line-height: 1.7;">
+                        <span style="position: absolute; left: 0; color: var(--gold); font-weight: 700;">→</span>
+                        Nobody else owns "reverse" as completely as Reverse Focus does
+                    </li>
+                </ul>
+            </div>
+
+            <h3 style="margin-top: 5rem; font-size: 2rem; color: var(--navy); margin-bottom: 2rem;">Differentiation Strategy</h3>
+            <div style="background: white; padding: 3rem;">
+                <ol style="list-style-position: inside; margin: 0; padding: 0;">
+                    <li style="margin-bottom: 1.5rem; line-height: 1.7;">
+                        <strong style="color: var(--navy);">Lead with dominance, not features.</strong> "20% of reverse loans run on our platform" should be the headline, not buried.
+                    </li>
+                    <li style="margin-bottom: 1.5rem; line-height: 1.7;">
+                        <strong style="color: var(--navy);">Own "Reverse."</strong> The name is already perfect. Lean into it harder.
+                    </li>
+                    <li style="margin-bottom: 1.5rem; line-height: 1.7;">
+                        <strong style="color: var(--navy);">Stop selling products; sell the integrated system.</strong> The bundle isn't a discount—it's the whole point.
+                    </li>
+                    <li style="margin-bottom: 1.5rem; line-height: 1.7;">
+                        <strong style="color: var(--navy);">Testimonials should reinforce leadership.</strong> Get testimonials that say "this is the industry standard."
+                    </li>
+                    <li style="margin-bottom: 1.5rem; line-height: 1.7;">
+                        <strong style="color: var(--navy);">Create insider language.</strong> "No lead left behind" is good. Build more ownable phrases.
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pentagram Lens -->
+    <section id="pentagram" style="background: white;">
+        <div class="container">
+            <div class="section-label">Lens 01 — Design Studio Rigor</div>
+            <h2 class="section-title">Pentagram/Collins</h2>
+            <p class="section-intro">What would a world-class design studio do?</p>
+
+            <div style="background: var(--bg); padding: 3rem; margin-bottom: 3rem; border-left: 4px solid var(--navy);">
+                <p style="font-size: 1.25rem; line-height: 1.7; color: var(--navy);">
+                    The design is competent but invisible. It's "good enough" WordPress—clean but characterless. There's no tension, no restraint, no editorial point of view. This is a brand that owns 20% of its market looking like a brand that's trying to break in.
+                </p>
+            </div>
+
+            <div class="design-rec">
+                <h3>Typography System</h3>
+                <ul>
+                    <li>Introduce typographic tension: pair a confident serif display face (Canela, Freight Display) with clean sans-serif (Inter, Söhne) for body</li>
+                    <li>Establish dramatic scale contrast—massive headlines (72-96pt) against restrained body copy (18pt)</li>
+                    <li>"20% of all reverse mortgage transactions" should be set in type that feels like a fact, not a claim</li>
+                </ul>
+            </div>
+
+            <div class="design-rec">
+                <h3>Color Refinement</h3>
+                <ul>
+                    <li>Abandon generic corporate blue. Move to deeper, more confident navy (#0A2540)</li>
+                    <li>Add warm gold or copper accent (#CFA052) — connotes trust, maturity, appropriate for senior audience</li>
+                    <li>System colors: Rich black (#1A1A1A), warm white (#FAFAFA), minimal grays</li>
+                    <li>Limit accent color usage to 10% or less for impact</li>
+                </ul>
+            </div>
+
+            <div class="design-rec">
+                <h3>Layout Discipline</h3>
+                <ul>
+                    <li>Embrace asymmetric grids with intentional white space</li>
+                    <li>Remove logo carousels—display integration partners in static, confident grid</li>
+                    <li>Hero sections should be editorial, not cluttered—one strong image, one strong statement</li>
+                    <li>Introduce 1px divider lines and subtle borders for structure</li>
+                    <li>Consider dark mode elements for sophistication (sections, not whole site)</li>
+                </ul>
+            </div>
+
+            <div class="design-rec">
+                <h3>Image Direction</h3>
+                <ul>
+                    <li>Move away from generic stock seniors-on-phones imagery</li>
+                    <li>Commission authentic photography or use abstract visual metaphors</li>
+                    <li>Consider illustration or data visualization as differentiation</li>
+                    <li>Software UI screenshots should be polished and aspirational, not GIFs</li>
+                </ul>
+            </div>
+
+            <div class="design-rec">
+                <h3>Identity Extension</h3>
+                <ul>
+                    <li>Develop the RF emblem into a pattern system or design asset</li>
+                    <li>Create a distinctive "R" motif that can anchor layouts</li>
+                    <li>Design icons in a consistent, ownable style</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brightscout Lens -->
+    <section id="brightscout" class="dark">
+        <div class="container">
+            <div class="section-label">Lens 03 — Innovation Opportunities</div>
+            <h2 class="section-title">Brightscout UX</h2>
+            <p class="section-intro">What would make this unforgettable?</p>
+
+            <div style="background: rgba(255,255,255,0.05); padding: 3rem; margin-bottom: 4rem; border-left: 4px solid var(--gold);">
+                <p style="font-size: 1.25rem; line-height: 1.7;">
+                    The site is functional but forgettable. It explains products and captures leads—but creates zero memorable moments. It's a digital brochure when it could be an experience that demonstrates the brand's capability.
+                </p>
+            </div>
+
+            <h3 style="font-size: 2rem; margin-bottom: 2rem; color: white;">Innovation Opportunities</h3>
+            <div class="innovation-grid">
+                <div class="innovation-card">
+                    <div class="innovation-label">01 — Visualization</div>
+                    <h4>Interactive Market Position</h4>
+                    <p>Real-time visualization showing "1 in 5 reverse loans runs on Reverse Focus." Map of US with funded loans pulsing. Make the dominance tangible.</p>
+                </div>
+
+                <div class="innovation-card">
+                    <div class="innovation-label">02 — Calculator</div>
+                    <h4>"Calculate Your Dominance"</h4>
+                    <p>Interactive tool: Enter your market, see reverse mortgage search volume, competition, and achievable results. Personalize the value prop.</p>
+                </div>
+
+                <div class="innovation-card">
+                    <div class="innovation-label">03 — Product Flow</div>
+                    <h4>Integrated Demo Journey</h4>
+                    <p>Show how a lead flows from Google search → Website → CRM → Funded Loan. Demonstrate the ecosystem with scroll-triggered animations.</p>
+                </div>
+
+                <div class="innovation-card">
+                    <div class="innovation-label">04 — Social Proof</div>
+                    <h4>Video Testimonials + Metrics</h4>
+                    <p>Short video clips with real metrics: "From X to Y in Z months." Make success feel achievable and human.</p>
+                </div>
+
+                <div class="innovation-card">
+                    <div class="innovation-label">05 — Localization</div>
+                    <h4>"See Your Market" Tool</h4>
+                    <p>Enter your city, see example website already ranking. Proof that the system works, personalized to their market.</p>
+                </div>
+
+                <div class="innovation-card">
+                    <div class="innovation-label">06 — Onboarding</div>
+                    <h4>First 30 Days Preview</h4>
+                    <p>Timeline visualization of setup, training, first leads. Reduce anxiety about "what happens after I sign up."</p>
+                </div>
+
+                <div class="innovation-card">
+                    <div class="innovation-label">07 — Honest Comparison</div>
+                    <h4>"When to Use Us vs. Alternatives"</h4>
+                    <p>Acknowledge generic CRMs work for some—but if you're serious about reverse, you need the specialized stack.</p>
+                </div>
+
+                <div class="innovation-card">
+                    <div class="innovation-label">08 — Content Tool</div>
+                    <h4>Sales Cycle Timeline</h4>
+                    <p>For the 9+ month reality, create content helping originators navigate the journey. Valuable content as brand asset.</p>
+                </div>
+            </div>
+
+            <h3 style="font-size: 2rem; margin-top: 5rem; margin-bottom: 2rem; color: white;">Memory Peak Moment</h3>
+            <div style="background: rgba(255,255,255,0.05); padding: 3rem; border-left: 4px solid var(--gold);">
+                <p style="font-size: 1.25rem; line-height: 1.7;">
+                    When visitor scrolls past the "20% of reverse loans" stat, trigger an animation that fills the screen with a visualization of scale—dots appearing, map lighting up, numbers counting. Then resolve to: <strong style="color: var(--gold);">"Ready to be part of it?"</strong>
+                </p>
+                <p style="font-size: 1.25rem; line-height: 1.7; margin-top: 1.5rem;">
+                    This creates the "peak" that visitors remember.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem;">REVERSE FOCUS</div>
+            <div class="divider"></div>
+            <p>Brand House — Strategic Analysis & Recommendations</p>
+            <p style="margin-top: 1rem; opacity: 0.7; font-size: 0.875rem;">The infrastructure 1 in 5 reverse loans runs on</p>
+        </div>
+    </footer>
+</body>
+</html>
