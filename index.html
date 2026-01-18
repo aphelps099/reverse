@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reverse Focus — Brand House</title>
+    <title>Reverse Focus — Brand</title>
     <link href="https://fonts.cdnfonts.com/css/futura-std-4" rel="stylesheet">
     <style>
         * {
@@ -15,216 +15,233 @@
         :root {
             --navy: #1E3A5F;
             --maroon: #7B2D42;
-            --silver: #C0C0C0;
-            --bg: #F5F5F5;
-            --dark: #1A1A2E;
-            --text: #2D3748;
         }
 
         body {
             font-family: 'Futura', -apple-system, sans-serif;
             background: #fff;
-            color: var(--text);
-            line-height: 1.5;
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        /* Nav */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255,255,255,0.95);
-            border-bottom: 1px solid rgba(0,0,0,0.06);
-            z-index: 100;
-            backdrop-filter: blur(8px);
-        }
-
-        nav .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 70px;
-        }
-
-        nav .brand {
-            font-size: 0.8125rem;
-            font-weight: 600;
-            letter-spacing: 0.05em;
-        }
-
-        nav a {
-            font-size: 0.8125rem;
-            color: var(--text);
-            text-decoration: none;
-            margin-left: 2rem;
-            opacity: 0.6;
+            color: #000;
+            overflow-x: hidden;
         }
 
         /* Hero */
         .hero {
-            padding: 140px 0 80px;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: 6rem;
-            font-weight: 600;
-            color: var(--navy);
-            line-height: 0.9;
-            letter-spacing: -0.03em;
-            margin-bottom: 1.5rem;
-        }
-
-        .hero p {
-            font-size: 1rem;
-            opacity: 0.6;
-        }
-
-        /* Identity */
-        .identity {
-            padding: 60px 0;
-        }
-
-        .section-label {
-            font-size: 0.6875rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--maroon);
-            font-weight: 600;
-            margin-bottom: 2rem;
-        }
-
-        .logos {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 1px;
-            background: rgba(0,0,0,0.06);
-            margin-bottom: 1px;
-        }
-
-        .logo-box {
-            background: #fff;
-            padding: 100px 40px;
+            height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
+            position: relative;
+            overflow: hidden;
         }
 
-        .logo-box.dark {
+        .hero-bg {
+            position: absolute;
+            font-size: 28vw;
+            font-weight: 700;
+            color: rgba(30, 58, 95, 0.03);
+            line-height: 0.85;
+            letter-spacing: -0.04em;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .hero-content {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 18vw;
+            font-weight: 700;
+            color: var(--navy);
+            line-height: 0.8;
+            letter-spacing: -0.04em;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-stat {
+            font-size: 6vw;
+            font-weight: 700;
+            color: var(--maroon);
+            letter-spacing: -0.02em;
+        }
+
+        /* Section */
+        .section {
+            padding: 4rem 2rem;
+            position: relative;
+        }
+
+        .section.dark {
+            background: var(--navy);
+            color: #fff;
+        }
+
+        .section.maroon {
+            background: var(--maroon);
+            color: #fff;
+        }
+
+        /* Identity */
+        .identity-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .id-box {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 0.5px solid rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .id-box.dark {
             background: var(--navy);
         }
 
-        .logo-box.tall {
-            grid-row: span 2;
-        }
-
-        .rf-circle {
-            width: 120px;
-            height: 120px;
-            border: 2.5px solid var(--navy);
+        .rf-mark {
+            width: 25vw;
+            max-width: 160px;
+            height: 25vw;
+            max-height: 160px;
+            border: 3px solid var(--navy);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3rem;
-            font-weight: 600;
+            font-size: 8vw;
+            max-font-size: 4rem;
+            font-weight: 700;
             color: var(--navy);
         }
 
-        .logo-box.dark .rf-circle {
+        .id-box.dark .rf-mark {
             border-color: #fff;
             color: #fff;
         }
 
-        .wordmark {
-            font-size: 2rem;
-            font-weight: 600;
-            letter-spacing: 0.02em;
-            color: var(--navy);
+        .type-overlay {
+            position: absolute;
+            font-size: 14vw;
+            font-weight: 700;
+            color: rgba(0,0,0,0.03);
+            line-height: 1;
+            letter-spacing: -0.03em;
+            pointer-events: none;
         }
 
-        .logo-box.dark .wordmark {
-            color: #fff;
+        .id-box.dark .type-overlay {
+            color: rgba(255,255,255,0.05);
         }
 
         /* Colors */
         .colors {
-            padding: 60px 0;
-            background: var(--bg);
-        }
-
-        .color-grid {
+            padding: 0;
             display: grid;
             grid-template-columns: repeat(6, 1fr);
-            gap: 1px;
-            background: rgba(0,0,0,0.06);
+            gap: 0;
         }
 
-        .swatch {
+        .color {
             aspect-ratio: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: 1.5rem;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s;
         }
 
-        .swatch span {
-            font-size: 0.6875rem;
-            font-weight: 600;
-            letter-spacing: 0.05em;
+        .color:hover {
+            transform: scale(1.05);
+            z-index: 10;
         }
 
-        .swatch small {
+        .color-label {
+            position: absolute;
+            bottom: 1rem;
+            left: 1rem;
             font-size: 0.625rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .color-hex {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 0.5rem;
             font-family: monospace;
-            opacity: 0.7;
-            margin-top: 0.25rem;
+            opacity: 0.5;
         }
 
         /* Type */
-        .type {
-            padding: 60px 0;
+        .type-section {
+            padding: 6rem 2rem;
+            background: var(--navy);
+            color: #fff;
         }
 
-        .type-row {
-            border-bottom: 1px solid rgba(0,0,0,0.06);
-            padding: 3rem 0;
+        .type-container {
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
-        .type-row:last-child {
-            border: 0;
+        .type-massive {
+            font-size: 16vw;
+            font-weight: 700;
+            line-height: 0.85;
+            letter-spacing: -0.04em;
+            margin-bottom: 2rem;
+            word-break: break-word;
         }
 
-        .type-meta {
-            font-size: 0.6875rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--maroon);
+        .type-medium {
+            font-size: 8vw;
+            font-weight: 700;
+            line-height: 0.9;
+            letter-spacing: -0.03em;
+            opacity: 0.9;
             margin-bottom: 1.5rem;
-            font-weight: 600;
         }
 
-        .type-sample {
-            color: var(--navy);
+        .type-body {
+            font-size: 1.125rem;
+            line-height: 1.5;
+            max-width: 600px;
+            opacity: 0.7;
         }
 
         /* Stack */
-        .stack {
-            padding: 60px 0;
-            background: var(--bg);
+        .stack-section {
+            padding: 4rem 2rem;
+            background: #fff;
         }
 
-        .stack-grid {
+        .stack-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .stack-title {
+            font-size: 12vw;
+            font-weight: 700;
+            color: var(--navy);
+            line-height: 0.8;
+            letter-spacing: -0.04em;
+            margin-bottom: 3rem;
+        }
+
+        .stack-items {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 1px;
-            background: rgba(0,0,0,0.06);
+            gap: 2px;
+            background: rgba(0,0,0,0.08);
         }
 
         .stack-item {
@@ -234,18 +251,19 @@
         }
 
         .stack-num {
-            font-size: 3rem;
-            font-weight: 600;
+            font-size: 6rem;
+            font-weight: 700;
             color: var(--maroon);
             line-height: 1;
+            opacity: 0.15;
             margin-bottom: 1rem;
         }
 
         .stack-name {
-            font-size: 1.25rem;
-            font-weight: 600;
+            font-size: 2rem;
+            font-weight: 700;
             color: var(--navy);
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.5rem;
         }
 
         .stack-desc {
@@ -254,292 +272,191 @@
         }
 
         /* Stat */
-        .stat {
-            padding: 100px 0;
+        .stat-section {
+            padding: 8rem 2rem;
             background: var(--maroon);
             color: #fff;
             text-align: center;
-        }
-
-        .stat-num {
-            font-size: 10rem;
-            font-weight: 600;
-            line-height: 1;
-            letter-spacing: -0.03em;
-        }
-
-        .stat-label {
-            font-size: 1.25rem;
-            margin-top: 1rem;
-            opacity: 0.9;
-        }
-
-        /* Apps */
-        .apps {
-            padding: 60px 0;
-        }
-
-        .app-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 1px;
-            background: rgba(0,0,0,0.06);
-        }
-
-        .app-box {
-            background: #fff;
+            position: relative;
             overflow: hidden;
         }
 
-        .app-box.wide {
-            grid-column: span 2;
+        .stat-bg {
+            position: absolute;
+            font-size: 40vw;
+            font-weight: 700;
+            opacity: 0.03;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            line-height: 1;
+            pointer-events: none;
         }
 
-        .app-visual {
-            aspect-ratio: 16/10;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            font-weight: 600;
+        .stat-num {
+            font-size: 20vw;
+            font-weight: 700;
+            line-height: 1;
+            letter-spacing: -0.04em;
+            position: relative;
+            z-index: 2;
         }
 
-        .app-info {
-            padding: 1.5rem;
-            border-top: 1px solid rgba(0,0,0,0.06);
-        }
-
-        .app-title {
-            font-size: 0.9375rem;
-            font-weight: 600;
-            color: var(--navy);
-            margin-bottom: 0.5rem;
-        }
-
-        .app-desc {
-            font-size: 0.8125rem;
-            opacity: 0.6;
+        .stat-label {
+            font-size: 2.5vw;
+            margin-top: 2rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 2;
         }
 
         /* Footer */
         footer {
-            padding: 80px 0;
+            padding: 6rem 2rem;
             background: var(--navy);
             color: #fff;
-            text-align: center;
         }
 
-        footer .brand {
-            font-size: 0.875rem;
-            font-weight: 600;
-            letter-spacing: 0.05em;
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
-        footer .line {
-            width: 30px;
-            height: 2px;
-            background: var(--maroon);
-            margin: 1.5rem auto;
+        .footer-massive {
+            font-size: 12vw;
+            font-weight: 700;
+            line-height: 0.85;
+            letter-spacing: -0.04em;
+            margin-bottom: 2rem;
         }
 
-        footer p {
-            font-size: 0.8125rem;
-            opacity: 0.5;
+        .footer-tagline {
+            font-size: 1.5rem;
+            opacity: 0.6;
         }
 
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 3.5rem;
-            }
-
-            .logos,
-            .color-grid,
-            .stack-grid,
-            .app-grid {
+            .identity-grid {
                 grid-template-columns: 1fr;
             }
 
-            .logo-box.tall {
-                grid-row: span 1;
+            .colors {
+                grid-template-columns: repeat(3, 1fr);
             }
 
-            .stat-num {
-                font-size: 5rem;
+            .stack-items {
+                grid-template-columns: 1fr;
+            }
+
+            .type-massive {
+                font-size: 20vw;
+            }
+
+            .stat-label {
+                font-size: 1rem;
             }
         }
     </style>
 </head>
 <body>
-    <nav>
-        <div class="container">
-            <div class="brand">REVERSE FOCUS</div>
-            <div>
-                <a href="#identity">Identity</a>
-                <a href="#colors">Colors</a>
-                <a href="#type">Type</a>
-            </div>
-        </div>
-    </nav>
-
+    <!-- Hero -->
     <section class="hero">
-        <div class="container">
-            <h1>Reverse<br>Focus</h1>
-            <p>Brand identity system</p>
+        <div class="hero-bg">REVERSE<br>FOCUS</div>
+        <div class="hero-content">
+            <h1>RF</h1>
+            <div class="hero-stat">1 IN 5</div>
         </div>
     </section>
 
-    <section id="identity" class="identity">
-        <div class="container">
-            <div class="section-label">Identity</div>
-            <div class="logos">
-                <div class="logo-box tall">
-                    <div class="rf-circle">RF</div>
-                </div>
-                <div class="logo-box dark">
-                    <div class="rf-circle">RF</div>
-                </div>
-                <div class="logo-box">
-                    <div class="wordmark">REVERSE FOCUS</div>
-                </div>
+    <!-- Identity -->
+    <section class="section">
+        <div class="identity-grid">
+            <div class="id-box">
+                <div class="rf-mark">RF</div>
+                <div class="type-overlay">REVERSE</div>
             </div>
-        </div>
-    </section>
-
-    <section id="colors" class="colors">
-        <div class="container">
-            <div class="section-label">Colors</div>
-            <div class="color-grid">
-                <div class="swatch" style="background: #1E3A5F; color: #fff;">
-                    <span>NAVY</span>
-                    <small>#1E3A5F</small>
-                </div>
-                <div class="swatch" style="background: #7B2D42; color: #fff;">
-                    <span>MAROON</span>
-                    <small>#7B2D42</small>
-                </div>
-                <div class="swatch" style="background: #C0C0C0; color: #1E3A5F;">
-                    <span>SILVER</span>
-                    <small>#C0C0C0</small>
-                </div>
-                <div class="swatch" style="background: #F5F5F5; color: #1E3A5F;">
-                    <span>GRAY</span>
-                    <small>#F5F5F5</small>
-                </div>
-                <div class="swatch" style="background: #1A1A2E; color: #fff;">
-                    <span>DARK</span>
-                    <small>#1A1A2E</small>
-                </div>
-                <div class="swatch" style="background: #2D3748; color: #fff;">
-                    <span>TEXT</span>
-                    <small>#2D3748</small>
-                </div>
+            <div class="id-box dark">
+                <div class="rf-mark">RF</div>
+                <div class="type-overlay">FOCUS</div>
             </div>
         </div>
     </section>
 
-    <section id="type" class="type">
-        <div class="container">
-            <div class="section-label">Typography</div>
+    <!-- Colors -->
+    <div class="colors">
+        <div class="color" style="background: #1E3A5F; color: #fff;">
+            <div class="color-label">NAVY</div>
+            <div class="color-hex">#1E3A5F</div>
+        </div>
+        <div class="color" style="background: #7B2D42; color: #fff;">
+            <div class="color-label">MAROON</div>
+            <div class="color-hex">#7B2D42</div>
+        </div>
+        <div class="color" style="background: #C0C0C0; color: #1E3A5F;">
+            <div class="color-label">SILVER</div>
+            <div class="color-hex">#C0C0C0</div>
+        </div>
+        <div class="color" style="background: #F5F5F5; color: #1E3A5F;">
+            <div class="color-label">GRAY</div>
+            <div class="color-hex">#F5F5F5</div>
+        </div>
+        <div class="color" style="background: #1A1A2E; color: #fff;">
+            <div class="color-label">DARK</div>
+            <div class="color-hex">#1A1A2E</div>
+        </div>
+        <div class="color" style="background: #2D3748; color: #fff;">
+            <div class="color-label">TEXT</div>
+            <div class="color-hex">#2D3748</div>
+        </div>
+    </div>
 
-            <div class="type-row">
-                <div class="type-meta">Display</div>
-                <div class="type-sample" style="font-size: 5rem; font-weight: 600; line-height: 0.9; letter-spacing: -0.02em;">
-                    20% of reverse loans
-                </div>
-            </div>
-
-            <div class="type-row">
-                <div class="type-meta">Headline</div>
-                <div class="type-sample" style="font-size: 3rem; font-weight: 600; line-height: 1.1; letter-spacing: -0.01em;">
-                    The ONLY end-to-end platform
-                </div>
-            </div>
-
-            <div class="type-row">
-                <div class="type-meta">Body</div>
-                <div class="type-sample" style="font-size: 1.125rem; font-weight: 400; line-height: 1.6;">
-                    We're reverse mortgage specialists who built the exact platform we needed—and now we power the industry. No lead left behind.
-                </div>
-            </div>
-
-            <div class="type-row">
-                <div class="type-meta">Label</div>
-                <div class="type-sample" style="font-size: 0.6875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em;">
-                    The Reverse Stack
-                </div>
+    <!-- Typography -->
+    <section class="type-section">
+        <div class="type-container">
+            <div class="type-massive">20%</div>
+            <div class="type-medium">of reverse loans</div>
+            <div class="type-body">
+                We're reverse mortgage specialists who built the exact platform we needed—and now we power the industry. No lead left behind.
             </div>
         </div>
     </section>
 
-    <section class="stack">
-        <div class="container">
-            <div class="section-label">The Stack</div>
-            <div class="stack-grid">
+    <!-- Stack -->
+    <section class="stack-section">
+        <div class="stack-container">
+            <div class="stack-title">THE<br>REVERSE<br>STACK</div>
+            <div class="stack-items">
                 <div class="stack-item">
                     <div class="stack-num">01</div>
                     <div class="stack-name">Website</div>
-                    <div class="stack-desc">MyLoanOfficer.us<br>Compliant sites</div>
+                    <div class="stack-desc">MyLoanOfficer.us</div>
                 </div>
                 <div class="stack-item">
                     <div class="stack-num">02</div>
                     <div class="stack-name">SEO</div>
-                    <div class="stack-desc">Online Dominance<br>Local search</div>
+                    <div class="stack-desc">Online Dominance</div>
                 </div>
                 <div class="stack-item">
                     <div class="stack-num">03</div>
                     <div class="stack-name">CRM</div>
-                    <div class="stack-desc">Sales Engine<br>9+ month nurture</div>
+                    <div class="stack-desc">Sales Engine</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="stat">
+    <!-- Stat -->
+    <section class="stat-section">
+        <div class="stat-bg">20%</div>
         <div class="stat-num">20%</div>
         <div class="stat-label">of all reverse mortgage transactions in America</div>
     </section>
 
-    <section class="apps">
-        <div class="container">
-            <div class="section-label">Applications</div>
-            <div class="app-grid">
-                <div class="app-box wide">
-                    <div class="app-visual" style="background: #1E3A5F; color: #fff;">RF</div>
-                    <div class="app-info">
-                        <div class="app-title">Originator Websites</div>
-                        <div class="app-desc">HUD-compliant templates</div>
-                    </div>
-                </div>
-                <div class="app-box">
-                    <div class="app-visual" style="background: #F5F5F5; color: #1E3A5F; font-size: 2rem;">20%</div>
-                    <div class="app-info">
-                        <div class="app-title">Data Viz</div>
-                        <div class="app-desc">Market share</div>
-                    </div>
-                </div>
-                <div class="app-box">
-                    <div class="app-visual" style="background: #fff; color: #1E3A5F; border: 1px solid rgba(0,0,0,0.06); font-size: 1.5rem;">Email</div>
-                    <div class="app-info">
-                        <div class="app-title">Templates</div>
-                        <div class="app-desc">CRM sequences</div>
-                    </div>
-                </div>
-                <div class="app-box">
-                    <div class="app-visual" style="background: #1A1A2E; color: #fff; font-size: 1.5rem;">UI</div>
-                    <div class="app-info">
-                        <div class="app-title">Dashboard</div>
-                        <div class="app-desc">Sales Engine</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
+    <!-- Footer -->
     <footer>
-        <div class="container">
-            <div class="brand">REVERSE FOCUS</div>
-            <div class="line"></div>
-            <p>Brand House</p>
+        <div class="footer-content">
+            <div class="footer-massive">REVERSE<br>FOCUS</div>
+            <div class="footer-tagline">Brand House</div>
         </div>
     </footer>
 </body>
